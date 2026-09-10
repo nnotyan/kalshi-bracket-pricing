@@ -1,0 +1,6 @@
+shape,exhaustive,events,share,legs
+ladder,not_applicable,3180,0.5283269646120619,32715
+categorical,unproven,2717,0.4514038876889849,43255
+partition,proven,64,0.010632995514205018,705
+partition,open_tail,47,0.00780860608074431,424
+categorical,residual_leg,11,0.0018275461040039873,103

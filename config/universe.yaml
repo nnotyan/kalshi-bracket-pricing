@@ -1,0 +1,47 @@
+# The working panel. The mix is deliberate rather than a liquidity ranking:
+# tightly quoted partitions where a raw flag has to be explained away, wide ones
+# where the no-arbitrage band swallows anything, large-n brackets where the band
+# is wide for no reason other than leg count, partitions whose settlement terms
+# leave outcomes unlisted, and ladders that exist to be excluded from the
+# sum-against-par screen.
+
+max_events_per_series: 2
+
+series:
+  # Six-leg temperature brackets. Whole-degree settlement, tight two-sided
+  # quotes all day, and the cleanest partitions on the venue.
+  - {ticker: KXHIGHNY,   role: partition_tight}
+  - {ticker: KXHIGHCHI,  role: partition_tight}
+  - {ticker: KXHIGHMIA,  role: partition_tight}
+  - {ticker: KXHIGHAUS,  role: partition_tight}
+  - {ticker: KXHIGHLAX,  role: partition_tight}
+  - {ticker: KXHIGHDEN,  role: partition_tight}
+  - {ticker: KXHIGHPHIL, role: partition_tight}
+
+  # Twenty- to thirty-leg brackets on prices and indices. Same quoting standard
+  # as the weather books, five times the band.
+  - {ticker: KXBTCY,        role: partition_wide_n, max_events: 1}
+  - {ticker: KXETHY,        role: partition_wide_n, max_events: 1}
+  - {ticker: KXINXY,        role: partition_wide_n, max_events: 1}
+  - {ticker: KXNASDAQ100Y,  role: partition_wide_n, max_events: 1}
+  - {ticker: KXGDPYEAR,     role: partition_wide_n, max_events: 1}
+  - {ticker: KXSOFRD,       role: partition_wide_n, max_events: 1}
+  - {ticker: RSENATESEATS,  role: partition_wide_n, max_events: 1}
+
+  # Partitions whose legs are disjoint but do not cover the outcome space. These
+  # are the ones a structure-blind screen reports as free money.
+  - {ticker: KXRATECUTCOUNT,       role: partition_open, max_events: 1}
+  - {ticker: KXDSENATESEATS,       role: partition_open, max_events: 1}
+  - {ticker: KXHOUSEPOPVOTEMARGIN, role: partition_open, max_events: 1}
+  - {ticker: KXFOMCDISSENTCOUNT,   role: partition_open, max_events: 1}
+
+  # Nested thresholds. Summing these against par is the error the screen exists
+  # to refuse to make.
+  - {ticker: KXFED,     role: ladder, max_events: 1}
+  - {ticker: KXAAAGASW, role: ladder, max_events: 1}
+  - {ticker: KXBTCD,    role: ladder, max_events: 1}
+
+# Bounds on a settlement variable that every reader knows but no rules text
+# states. Supplying one is an assumption and is recorded as such in the
+# evidence, so a bracket only ever counts as exhaustive on the record.
+domain_bounds: {}

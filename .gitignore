@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+data/quotes/
+data/raw/
+results/
+*.parquet
+!data/sample/*.parquet
+.DS_Store
+.env
+
+# Full-board census output: regenerate with `brackets board`
+data/universe_all.json
+data/collect.log

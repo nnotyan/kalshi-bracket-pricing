@@ -1,0 +1,24 @@
+# Screen parameters. Everything that could be argued about lives here rather
+# than in the code.
+
+fees:
+  # Kalshi's general trading fee schedule.
+  rate: 0.07
+  # Clip sizes the screen prices the bracket at. The floor in the fee function
+  # makes the answer size-dependent, so a single number would be a hidden
+  # assumption.
+  order_sizes: [1, 10, 50, 250, 1000]
+
+execution:
+  # An offer with nothing behind it is not a price. Legs quoting less than this
+  # many contracts on the offer are treated as unbuyable.
+  min_offer_size: 25
+  # Above this many minutes without either bid moving, a leg is called stale.
+  max_stale_minutes: 5
+
+quality:
+  # An event is competitively quoted if its typical leg is this tight or better,
+  # has this much depth on the offer, and is two-sided essentially all the time.
+  max_median_width: 2.0
+  min_offer_size: 25
+  min_offered_share: 0.99

@@ -52,7 +52,8 @@ def cmd_board(args: argparse.Namespace) -> int:
     """Classify every open event and report the census."""
     client = KalshiClient()
     entries = discover(client, min_legs=args.min_legs, max_pages=args.max_pages,
-                       shapes=("partition", "ladder", "categorical"))
+                       shapes=("partition", "ladder", "categorical"),
+                       strict_support=args.strict_support)
     write_universe(entries, Path(args.out))
 
     census = Counter((e.shape, e.exhaustive) for e in entries)
@@ -225,6 +226,9 @@ def main(argv: list[str] | None = None) -> int:
     board.add_argument("--out", default="data/universe_all.json")
     board.add_argument("--min-legs", type=int, default=3)
     board.add_argument("--max-pages", type=int, default=40)
+    board.add_argument("--strict-support", action="store_true",
+                       help="accept only the support the rules text states, refusing to "
+                            "read the settlement tick off the strike grid")
     board.set_defaults(func=cmd_board)
 
     disc = subparsers.add_parser("discover", help="build the working universe")

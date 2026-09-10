@@ -69,6 +69,18 @@ def test_strike_precision_is_read_as_the_settlement_tick():
     assert result.exhaustive is Exhaustive.PROVEN
 
 
+def test_strict_support_refuses_to_read_the_tick_off_the_strikes():
+    # The same S&P bracket. By default the .99 convention establishes a cent
+    # tick and the legs tile; under the strict model, where only the rules text
+    # counts, the one-cent step between 4,199.99 and 4,200 is an unproven gap.
+    markets = [market("T4200", cap=4199.99, rules="If the close is less than 4199.99"),
+               market("B4250", floor=4200, cap=4299.99),
+               market("T4300", floor=4299.99, rules="If the close is above 4299.99")]
+    event_dict = event("KXINXY-TEST", markets, title="S&P close price?")
+    assert classify(event_dict).exhaustive is Exhaustive.PROVEN
+    assert classify(event_dict, strict_support=True).exhaustive is Exhaustive.GAP
+
+
 def test_nested_thresholds_are_a_ladder_not_a_partition():
     result = classify(LADDER)
     assert result.shape is Shape.LADDER

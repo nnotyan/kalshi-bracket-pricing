@@ -72,6 +72,14 @@ variable can take. `infer_support` builds one:
 The model that came out is recorded in the evidence list on every verdict, so a
 "proven" is always readable as "proven under this assumption".
 
+It is worth knowing how much weight that assumption carries, so
+`brackets board --strict-support` re-runs the census accepting only what the
+rules text states. Of the 64 partitions the default classifier calls proven, 30
+survive; the other 34 are proven only because the strike grid was read as
+evidence of the settlement tick. That is a large enough share to be worth
+stating plainly rather than burying: the inference is a good rule, it is not a
+contract term, and a third of the screenable universe depends on it.
+
 ### The ends of the support
 
 An exhaustive numeric bracket normally needs an open leg at each end. But a

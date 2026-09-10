@@ -102,8 +102,8 @@ def discover(client: KalshiClient, series: Sequence[str] | None = None,
              min_legs: int = 3, min_volume: float = 0.0,
              shapes: Iterable[str] = ("partition", "ladder"),
              max_pages: int = 60,
-             domain_bounds: dict[str, tuple[float | None, float | None]] | None = None
-             ) -> list[UniverseEntry]:
+             domain_bounds: dict[str, tuple[float | None, float | None]] | None = None,
+             strict_support: bool = False) -> list[UniverseEntry]:
     """Classify open events and keep the ones worth watching.
 
     With no ``series`` filter this walks the whole open board, which is a few
@@ -123,7 +123,8 @@ def discover(client: KalshiClient, series: Sequence[str] | None = None,
         markets = event.get("markets") or []
         if len(markets) < min_legs:
             continue
-        structure = classify(event, domain_bounds=domain_bounds)
+        structure = classify(event, domain_bounds=domain_bounds,
+                             strict_support=strict_support)
         if structure.shape not in wanted:
             continue
         liquidity, volume = _event_liquidity(event)

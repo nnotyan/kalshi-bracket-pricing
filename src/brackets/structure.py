@@ -214,7 +214,7 @@ def _decimal_places(value: float) -> int:
     return len(frac)
 
 
-def infer_support(markets: Sequence[dict]) -> SupportModel:
+def infer_support(markets: Sequence[dict], strict: bool = False) -> SupportModel:
     """Decide what grid the settlement variable lives on, and where it ends.
 
     Rules text comes first because it is the contract. Where it is silent about
@@ -223,6 +223,11 @@ def infer_support(markets: Sequence[dict]) -> SupportModel:
     the strike grid *is* the tick. Reading it off the strikes rather than
     guessing is what lets "4,199.99" and "4,200" be recognised as touching
     instead of being reported as a hole in the bracket.
+
+    ``strict`` refuses that second step and accepts only what the rules text
+    says. It exists to be run alongside the default, because the difference
+    between the two censuses is the honest measure of how much of the "proven"
+    column rests on the inference rather than on the contract.
     """
     text = " ".join(
         str(m.get(key) or "")
@@ -242,7 +247,7 @@ def infer_support(markets: Sequence[dict]) -> SupportModel:
         return SupportModel("integer", 1.0, "rules describe a whole-number quantity",
                             lo_bound, hi_bound)
 
-    if strikes:
+    if strikes and not strict:
         places = max(_decimal_places(s) for s in strikes)
         step = 10.0 ** (-places)
         if places == 0:
@@ -317,8 +322,8 @@ def _adjacent(prev_hi: float, next_lo: float, support: SupportModel) -> bool:
 
 
 def classify(event: dict, markets: Sequence[dict] | None = None,
-             domain_bounds: dict[str, tuple[float | None, float | None]] | None = None
-             ) -> EventStructure:
+             domain_bounds: dict[str, tuple[float | None, float | None]] | None = None,
+             strict_support: bool = False) -> EventStructure:
     """Work out the shape of an event and how far its legs are proven to cover.
 
     Only tradeable legs are considered. A settled or closed leg no longer covers
@@ -352,7 +357,7 @@ def classify(event: dict, markets: Sequence[dict] | None = None,
         return build(Shape.SINGLETON, Exhaustive.NOT_APPLICABLE, legs, None,
                      ["fewer than two tradeable legs"])
 
-    support = infer_support(live)
+    support = infer_support(live, strict=strict_support)
     override = (domain_bounds or {}).get(str(event.get("series_ticker") or ""))
     if override:
         lo, hi = override

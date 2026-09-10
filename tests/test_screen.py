@@ -87,6 +87,48 @@ def test_triage_prefers_the_structural_reason_over_the_numerical_one():
         assert (triaged["reason"] == "wrong_shape").all()
 
 
+def test_depth_is_checked_on_the_side_that_actually_trades():
+    # A bracket whose legs are all offered deep but where one leg has nobody
+    # bidding for it. The long trade is executable; the short trade is not,
+    # because there is no bid to sell that leg into.
+    stamp = pd.Timestamp("2026-09-10 12:00", tz="UTC")
+    rows = [
+        {"ticker": "SIM-T85", "yes_bid": 60.0, "no_bid": 39.0,
+         "yes_bid_size": 400.0, "yes_ask_size": 400.0},
+        {"ticker": "SIM-B86", "yes_bid": 30.0, "no_bid": 69.0,
+         "yes_bid_size": 400.0, "yes_ask_size": 400.0},
+        {"ticker": "SIM-B88", "yes_bid": 12.0, "no_bid": 87.0,
+         "yes_bid_size": 400.0, "yes_ask_size": 400.0},
+        {"ticker": "SIM-B90", "yes_bid": 1.0, "no_bid": 98.0,
+         "yes_bid_size": 400.0, "yes_ask_size": 400.0},
+        {"ticker": "SIM-B92", "yes_bid": 1.0, "no_bid": 98.0,
+         "yes_bid_size": 400.0, "yes_ask_size": 400.0},
+        # Nobody bids for this leg at all, so it cannot be sold.
+        {"ticker": "SIM-T92", "yes_bid": 0.0, "no_bid": 99.0,
+         "yes_bid_size": 0.0, "yes_ask_size": 400.0},
+    ]
+    panel = prepare(pd.DataFrame([
+        {"ts": stamp, "event_ticker": "SIM-EVENT", "status": "active", **row}
+        for row in rows
+    ]))
+    structures = {"SIM-EVENT": classify(simulated_universe()[0])}
+    screened = screen_partitions(panel, structures)
+
+    row = screened.iloc[0]
+    assert row["long_min_size"] == 400.0        # every leg can be bought
+    assert row["short_min_size"] == 0.0         # one leg cannot be sold
+    assert row["long_all_offered"]
+    assert not row["short_all_offered"]
+
+    # The bid sum is 104, so a side-blind screen calls this a four-cent short.
+    assert row["bid_sum"] == 104.0
+    flags = naive_flags(screened)
+    assert flags.iloc[0]["side"] == "short"
+    assert flags.iloc[0]["min_offer_size"] == 0.0
+    triaged = triage(flags, structures, ScreenConfig())
+    assert triaged.iloc[0]["reason"] == "no_depth"
+
+
 def test_funnel_shares_add_to_one():
     aligned, structures, _ = build(minutes=120)
     flags = naive_flags(screen_partitions(aligned, structures))
@@ -111,7 +153,8 @@ def test_ladder_violation_needs_the_high_bid_above_the_low_ask():
         {"ticker": "L3", "yes_bid": 20.0, "no_bid": 75.0},
     ]
     panel = prepare(pd.DataFrame([
-        {"ts": stamp, "event_ticker": "LAD", "yes_ask_size": 500.0, **row} for row in rows
+        {"ts": stamp, "event_ticker": "LAD", "yes_ask_size": 500.0,
+         "yes_bid_size": 500.0, **row} for row in rows
     ]))
     hits = screen_ladders(panel, {"LAD": structure})
     assert len(hits) == 1
@@ -129,6 +172,7 @@ def test_a_monotone_ladder_produces_nothing():
             {"ticker": "L2", "yes_bid": 40.0, "no_bid": 58.0},
             {"ticker": "L3", "yes_bid": 10.0, "no_bid": 88.0}]
     panel = prepare(pd.DataFrame([
-        {"ts": stamp, "event_ticker": "LAD", "yes_ask_size": 500.0, **row} for row in rows
+        {"ts": stamp, "event_ticker": "LAD", "yes_ask_size": 500.0,
+         "yes_bid_size": 500.0, **row} for row in rows
     ]))
     assert len(screen_ladders(panel, {"LAD": structure})) == 0

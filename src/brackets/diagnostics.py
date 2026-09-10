@@ -29,8 +29,11 @@ following that applies, in this order:
     two to clear a band that is itself only a cent or two wide.
 
 ``no_depth``
-    Every leg is quoted and fresh, but at least one has an offer too thin to
-    fill the intended clip. The price is real and the size is not.
+    Every leg is quoted and fresh, but at least one is too thin on the side the
+    trade actually needs -- the offer for a bracket being bought, the bid for one
+    being sold. The price is real and the size is not. Legs with nothing at all
+    on the relevant side land here too, since a depth of zero is the limiting
+    case of a quote you cannot trade against.
 
 ``fee_bound``
     Everything above passes and the gross edge is genuine, but it does not

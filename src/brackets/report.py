@@ -318,6 +318,76 @@ def figure_flag_funnel(triaged: pd.DataFrame, out: Path) -> Path:
     return _save(fig, out, "flag_funnel.png")
 
 
+def figure_stale_case(panel: pd.DataFrame, triaged: pd.DataFrame, out: Path,
+                      window: int = 45) -> Path | None:
+    """The single largest staleness-attributed flag, leg by leg.
+
+    A summary that says "most flags are stale quotes" is worth exactly as much
+    as the one case it can show. This one picks the biggest such flag and draws
+    what the book was doing around it: the frozen leg holding still while the
+    rest of the bracket re-prices around it, and the ask sum sliding under par
+    as a direct result.
+    """
+    stale = triaged[triaged["reason"] == "stale_quote"]
+    if not len(stale):
+        return None
+    worst = stale.loc[stale["gross"].idxmax()]
+    event_ticker, moment = worst["event_ticker"], pd.Timestamp(worst["ts"])
+
+    legs = panel[panel["event_ticker"] == event_ticker].copy()
+    span = pd.Timedelta(minutes=window)
+    legs = legs[(legs["ts"] >= moment - span) & (legs["ts"] <= moment + span)]
+    if not len(legs):
+        return None
+
+    at_flag = legs[legs["ts"] == moment]
+    culprit = at_flag.loc[at_flag["stale_minutes"].idxmax(), "ticker"]
+
+    # The long Dutch book buys every leg at its ask; the short one sells every
+    # leg at its bid. Which quote matters, and which side of par counts as the
+    # apparent edge, flips with the side of the flag.
+    short = str(worst.get("side", "long")) == "short"
+    leg_column = "yes_bid" if short else "yes_ask_derived"
+    leg_label = "leg bid" if short else "leg ask"
+    total_label = "sum of bids" if short else "sum of asks"
+    direction = "over par" if short else "under par"
+
+    fig, axes = plt.subplots(2, 1, figsize=(9.6, 6.0), sharex=True,
+                             gridspec_kw={"height_ratios": [2, 1]})
+
+    for ticker, group in legs.groupby("ticker", sort=False):
+        group = group.sort_values("ts")
+        is_culprit = ticker == culprit
+        axes[0].plot(group["ts"], group[leg_column],
+                     color=NO if is_culprit else MUTED,
+                     linewidth=1.8 if is_culprit else 0.9,
+                     alpha=1.0 if is_culprit else 0.55,
+                     zorder=3 if is_culprit else 2,
+                     label=f"{ticker.split('-')[-1]} (frozen)" if is_culprit else None)
+    axes[0].legend(frameon=False, fontsize=9, loc="upper left")
+    _style(axes[0], f"{event_ticker}: one leg stopped quoting while the rest moved",
+           "", f"{leg_label}, cents")
+
+    totals = legs.groupby("ts")[leg_column].sum().reset_index(name="total")
+    axes[1].axhline(100, color=MUTED, linewidth=1.0, linestyle="--")
+    axes[1].plot(totals["ts"], totals["total"], color=INK, linewidth=1.4)
+    axes[1].fill_between(totals["ts"], 100, totals["total"],
+                         where=(totals["total"] > 100) if short else (totals["total"] < 100),
+                         color=ACCENT, alpha=0.3, interpolate=True)
+    _style(axes[1], "", "", f"{total_label}, cents")
+
+    for ax in axes:
+        ax.axvline(moment, color=NO, linewidth=1.0, linestyle=":", alpha=0.8)
+    axes[1].text(0.015, 0.08,
+                 f"flagged {worst['gross']:.1f}c {direction} on the "
+                 f"{'short' if short else 'long'} side, "
+                 f"with a leg unchanged for {worst['max_stale']:.0f} minutes",
+                 transform=axes[1].transAxes, fontsize=8.5, color=NO)
+    fig.autofmt_xdate()
+    fig.tight_layout()
+    return _save(fig, out, "stale_case.png")
+
+
 def figure_fee_identity(screened: pd.DataFrame, out: Path, rate: float = 0.07) -> Path:
     """Assembly cost against the Gini-Simpson index of the implied distribution."""
     sample = screened.dropna(subset=["gini_simpson"])
@@ -447,10 +517,15 @@ def build_report(results: Path, out: Path, config: dict | None = None) -> list[P
                 written.append(figure_fee_identity(partitions, out, rate=rate))
 
     flags_path = results / "flags_triaged.parquet"
+    panel_path = results / "panel_prepared.parquet"
     if flags_path.exists():
         triaged = pd.read_parquet(flags_path)
         if len(triaged):
             written.append(figure_flag_funnel(triaged, out))
+            if panel_path.exists():
+                case = figure_stale_case(pd.read_parquet(panel_path), triaged, out)
+                if case:
+                    written.append(case)
 
     census = Path("data/universe_all.json")
     if census.exists():

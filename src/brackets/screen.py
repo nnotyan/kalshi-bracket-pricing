@@ -54,22 +54,40 @@ class ScreenConfig:
 
 
 def _cross_section(group: pd.DataFrame) -> dict:
-    """Reduce one event-minute to the quantities both screens are built from."""
+    """Reduce one event-minute to the quantities both screens are built from.
+
+    Depth is recorded separately for the two sides, because they are not the
+    same trade. Buying the bracket lifts each leg's YES offer, which is the NO
+    book, so it needs ``yes_ask_size``. Selling the bracket buys a NO on every
+    leg, which means hitting each leg's YES bid, so it needs ``yes_bid_size``. A
+    leg nobody bids for can still be bought, and a leg nobody offers can still
+    be sold; checking one side's depth against the other side's trade is how a
+    screen ends up reporting an unexecutable bracket as free money.
+    """
     ask = group["yes_ask_derived"].to_numpy(dtype="float64")
     bid = group["yes_bid"].to_numpy(dtype="float64")
     half = group["half_spread"].to_numpy(dtype="float64")
     mid = group["mid"].to_numpy(dtype="float64")
-    size = group["yes_ask_size"].to_numpy(dtype="float64")
+    ask_size = group["yes_ask_size"].to_numpy(dtype="float64")
+    bid_size = group["yes_bid_size"].to_numpy(dtype="float64")
     stale = group["stale_minutes"].to_numpy(dtype="float64")
+
+    def smallest(values: np.ndarray) -> float:
+        if not len(values) or np.all(np.isnan(values)):
+            return 0.0
+        return float(np.nanmin(values))
+
     return {
         "n_legs": len(group),
         "ask_sum": float(np.sum(ask)),
         "bid_sum": float(np.sum(bid)),
         "mid_sum": float(np.sum(mid)),
         "band": float(np.sum(half)),
-        "min_offer_size": float(np.nanmin(size)) if len(size) else 0.0,
+        "long_min_size": smallest(ask_size),
+        "short_min_size": smallest(bid_size),
+        "long_all_offered": bool(group["yes_offered"].all()),
+        "short_all_offered": bool(group["no_offered"].all()),
         "max_stale": float(np.nanmax(stale)) if len(stale) else 0.0,
-        "all_offered": bool(group["yes_offered"].all()),
         "any_crossed": bool(group["crossed"].any()),
         "_asks": ask,
         "_bids": bid,
@@ -147,14 +165,20 @@ def naive_flags(screened: pd.DataFrame, sizes: Sequence[int] = DEFAULT_SIZES) ->
     if not len(screened):
         return screened
     flags = screened[(screened["long_gross"] > 0) | (screened["short_gross"] > 0)].copy()
-    flags["side"] = np.where(flags["long_gross"] > 0, "long", "short")
-    flags["gross"] = np.where(flags["side"] == "long",
-                              flags["long_gross"], flags["short_gross"])
-    flags["band_ratio"] = np.where(flags["side"] == "long",
-                                   flags["long_band_ratio"], flags["short_band_ratio"])
+    long = flags["long_gross"] > 0
+    flags["side"] = np.where(long, "long", "short")
+    flags["gross"] = np.where(long, flags["long_gross"], flags["short_gross"])
+    flags["band_ratio"] = np.where(long, flags["long_band_ratio"],
+                                   flags["short_band_ratio"])
+    # Collapse the side-specific execution columns onto the side that flagged, so
+    # the triage never has to know which trade it is looking at.
+    flags["min_offer_size"] = np.where(long, flags["long_min_size"],
+                                       flags["short_min_size"])
+    flags["all_offered"] = np.where(long, flags["long_all_offered"],
+                                    flags["short_all_offered"])
     for size in sizes:
-        flags[f"net_{size}"] = np.where(flags["side"] == "long",
-                                        flags[f"long_net_{size}"], flags[f"short_net_{size}"])
+        flags[f"net_{size}"] = np.where(long, flags[f"long_net_{size}"],
+                                        flags[f"short_net_{size}"])
     return flags.reset_index(drop=True)
 
 
@@ -185,7 +209,8 @@ def screen_ladders(panel: pd.DataFrame, structures: Mapping[str, EventStructure]
         thresholds = group["_threshold"].to_numpy(dtype="float64")
         asks = group["yes_ask_derived"].to_numpy(dtype="float64")
         bids = group["yes_bid"].to_numpy(dtype="float64")
-        sizes = group["yes_ask_size"].to_numpy(dtype="float64")
+        ask_sizes = group["yes_ask_size"].to_numpy(dtype="float64")
+        bid_sizes = group["yes_bid_size"].to_numpy(dtype="float64")
         stale = group["stale_minutes"].to_numpy(dtype="float64")
         tickers = group["ticker"].to_numpy()
 
@@ -200,7 +225,9 @@ def screen_ladders(panel: pd.DataFrame, structures: Mapping[str, EventStructure]
                 "low_threshold": thresholds[i], "high_threshold": thresholds[i + 1],
                 "low_ask": asks[i], "high_bid": bids[i + 1],
                 "gross": gross,
-                "min_offer_size": float(np.nanmin(sizes[i:i + 2])),
+                # The low rung is bought and the high rung is sold, so the two
+                # legs are constrained by depth on opposite sides of the book.
+                "min_offer_size": float(np.nanmin([ask_sizes[i], bid_sizes[i + 1]])),
                 "max_stale": float(np.nanmax(stale[i:i + 2])),
             }
             for size in config.order_sizes:

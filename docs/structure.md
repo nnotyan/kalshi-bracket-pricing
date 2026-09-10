@@ -30,10 +30,11 @@ From there the shape follows:
 
 Ladders are not a rare corner. On the open board, they are the overwhelming
 majority of multi-outcome events, because every sports prop of the form "more
-than N yards" and every hourly crypto threshold is one. Summing a
-188-leg ladder against par produces an apparent short-side edge in the tens of
-dollars, which is why this is the first thing the screen tests and the first
-reason the triage assigns.
+than N yards" and every hourly crypto threshold is one. The eighty-rung Bitcoin
+ladder in the sample panel sums to an apparent short-side edge of about thirty
+dollars, seventy-one times its own band, on every minute it was observed. That
+is why shape is the first thing the screen tests and the first reason the triage
+assigns.
 
 ## Exhaustiveness
 

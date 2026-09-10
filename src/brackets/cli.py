@@ -25,7 +25,8 @@ import yaml
 from .api import KalshiClient
 from .book import reconcile
 from .collect import collect, discover, load_panel, read_universe, write_universe
-from .diagnostics import (band_profile, funnel, stale_leg_detail, survivors, triage)
+from .diagnostics import (REASONS, band_profile, funnel, stale_leg_detail,
+                          survivors, triage)
 from .fees import assembly_cost, bracket_fee_cents, gini_simpson
 from .panel import align, event_quality, mark_competitive, prepare
 from .screen import ScreenConfig, naive_flags, screen_ladders, screen_partitions
@@ -197,6 +198,21 @@ def _print_summary(panel: pd.DataFrame, screened: pd.DataFrame, triaged: pd.Data
             print(f"\nrestricted to competitively quoted events ({len(competitive)} flags)")
             for row in funnel(competitive).itertuples():
                 print(f"  {row.reason:<16}{row.flags:>7}{row.share:>9.1%}")
+
+    if len(triaged):
+        # The biggest raw flags are the ones a structure-blind screen would chase
+        # first, so naming what each actually was is the most direct answer to
+        # "but surely some of them are real".
+        print("\nthe largest raw flag of each kind")
+        print(f"  {'reason':<16}{'event':<30}{'side':>6}{'gross':>9}{'band':>7}{'x band':>8}")
+        for reason in REASONS:
+            rows = triaged[triaged["reason"] == reason]
+            if not len(rows):
+                continue
+            row = rows.loc[rows["gross"].idxmax()]
+            ratio = row["gross"] / row["band"] if row["band"] else float("nan")
+            print(f"  {reason:<16}{row['event_ticker'][:29]:<30}{row['side']:>6}"
+                  f"{row['gross']:>9.1f}{row['band']:>7.1f}{ratio:>8.1f}")
 
     kept = survivors(triaged)
     print(f"\nsurvivors    {len(kept)}")

@@ -466,15 +466,19 @@ Worth being explicit about, because several of these would change the numbers
 rather than just the presentation.
 
 - **Top of book only.** The panel records the best bid on each side and the size
-  behind it. Assembling a bracket in real size walks the book, so the screen's
-  execution assumption is optimistic exactly where it matters most.
+  behind it, so a clip larger than the top-of-book size would walk into worse
+  prices that this data cannot see. The screen's execution assumption is
+  optimistic exactly where it matters most, and the 1,000-contract column should
+  be read as an upper bound on what that size would achieve rather than a
+  quote.
 - **Quotes, not fills.** Nothing here was traded. A flag that survives the screen
   is a flag that survived the screen; whether it would have filled at those
   prices is a different question and this repository does not answer it.
-- **A short sample.** The panel is a few hours of a single afternoon. That is
+- **A short sample.** Eighty-five minutes of one afternoon, 28 events. That is
   enough to characterise where flags come from and to demonstrate the band and
-  fee arithmetic; it is not enough to say anything about how often a genuine
-  dislocation appears.
+  fee arithmetic, both of which are structural. It is not enough to say anything
+  about how *often* a genuine dislocation appears, and the six fee-bound minutes
+  are six observations, not a rate.
 - **Collateral is not modelled.** Buying every YES leg costs the ask sum up
   front. Selling the bracket means buying `n` NO contracts, which is a far larger
   outlay unless the venue nets it. Kalshi does net across mutually exclusive legs

@@ -419,21 +419,43 @@ def figure_fee_identity(screened: pd.DataFrame, out: Path, rate: float = 0.07) -
     return _save(fig, out, "fee_identity.png")
 
 
+def real_bracket_prices(panel: pd.DataFrame) -> dict[str, list[float]]:
+    """A representative ask vector for each partition in the panel.
+
+    Taken at the panel's median minute rather than averaged, so the vector is a
+    book that actually existed rather than a blend of several.
+    """
+    out: dict[str, list[float]] = {}
+    for event_ticker, group in panel.groupby("event_ticker", sort=False):
+        stamps = sorted(group["ts"].unique())
+        if not stamps:
+            continue
+        snapshot = group[group["ts"] == stamps[len(stamps) // 2]]
+        out[str(event_ticker)] = snapshot["yes_ask_derived"].astype("float64").tolist()
+    return out
+
+
 def figure_fee_size_crossover(out: Path, rate: float = 0.07,
-                              concentrated: list[float] | None = None,
-                              dispersed: list[float] | None = None) -> Path:
-    """Per-bracket cost against order size for two partition shapes."""
-    concentrated = concentrated or ([88.0] + [1.0] * 11)
-    dispersed = dispersed or [34.0, 33.0, 33.0]
+                              concentrated: tuple[str, list[float]] | None = None,
+                              dispersed: tuple[str, list[float]] | None = None) -> Path:
+    """Per-bracket cost against order size for two partition shapes.
+
+    Falls back to illustrative vectors when no panel is available, but the point
+    lands harder with two real brackets, because the reversal is not a contrived
+    pair -- it is what the venue's own listings do to each other.
+    """
+    name_a, prices_a = concentrated or ("concentrated bracket", [88.0] + [1.0] * 11)
+    name_b, prices_b = dispersed or ("dispersed bracket", [34.0, 33.0, 33.0])
     sizes = np.unique(np.round(np.logspace(0, 3.4, 90)).astype(int))
 
     fig, ax = plt.subplots(figsize=FIGSIZE)
-    curve_a = cost_curve(concentrated, sizes, rate=rate)
-    curve_b = cost_curve(dispersed, sizes, rate=rate)
+    curve_a = cost_curve(prices_a, sizes, rate=rate)
+    curve_b = cost_curve(prices_b, sizes, rate=rate)
     ax.plot(sizes, curve_a, color=YES, linewidth=1.6,
-            label=f"12 legs, one near-certain (D={gini_simpson(concentrated):.2f})")
+            label=f"{name_a}  ({len(prices_a)} legs, D = {gini_simpson(prices_a):.2f})")
     ax.plot(sizes, curve_b, color=NO, linewidth=1.6,
-            label=f"3 legs, near uniform (D={gini_simpson(dispersed):.2f})")
+            label=f"{name_b}  ({len(prices_b)} legs, D = {gini_simpson(prices_b):.2f})")
+    concentrated, dispersed = prices_a, prices_b
     ax.axhline(continuous_fee_cents_per_bracket(concentrated, rate=rate), color=YES,
                linestyle=":", linewidth=1.0)
     ax.axhline(continuous_fee_cents_per_bracket(dispersed, rate=rate), color=NO,
@@ -498,14 +520,54 @@ def render_terminal(text: str, out: Path, name: str, title: str = "") -> Path:
     return path
 
 
+def _crossover_pair(panel: pd.DataFrame | None, partitions: pd.DataFrame | None):
+    """Pick two real brackets that trade leg count off against dispersion.
+
+    The reversal needs the many-legged bracket to be the *concentrated* one. If
+    the panel has no such pair the caller falls back to illustrative vectors,
+    which is honest: a crossover that is not there should not be drawn.
+    """
+    if panel is None or partitions is None or not len(partitions):
+        return None, None
+    profile = (partitions.groupby("event_ticker")
+               .agg(legs=("n_legs", "max"), gini=("gini_simpson", "median")))
+    if len(profile) < 2:
+        return None, None
+
+    prices = real_bracket_prices(panel)
+    # A reversal needs the many-legged bracket to be the concentrated one: more
+    # legs to pay the floor on, less dispersion to pay the rate on. Search the
+    # pairs directly and take the one that separates most on both counts.
+    best, best_score = (None, None), 0.0
+    for a in profile.index:
+        for b in profile.index:
+            if a == b or a not in prices or b not in prices:
+                continue
+            leg_gap = profile.loc[a, "legs"] - profile.loc[b, "legs"]
+            gini_gap = profile.loc[b, "gini"] - profile.loc[a, "gini"]
+            if leg_gap <= 0 or gini_gap <= 0:
+                continue
+            score = leg_gap * gini_gap
+            if score > best_score:
+                best, best_score = (str(a), str(b)), score
+
+    a, b = best
+    if a is None or crossover_size(prices[a], prices[b]) is None:
+        return None, None
+    return (a, prices[a]), (b, prices[b])
+
+
 def build_report(results: Path, out: Path, config: dict | None = None) -> list[Path]:
     """Draw everything that the available inputs support."""
     config = config or {}
     rate = float((config.get("fees") or {}).get("rate", 0.07))
-    written = [figure_book_inversion(out), figure_structure_taxonomy(out),
-               figure_fee_size_crossover(out, rate=rate)]
+    written = [figure_book_inversion(out), figure_structure_taxonomy(out)]
+
+    panel_path = results / "panel_prepared.parquet"
+    panel = pd.read_parquet(panel_path) if panel_path.exists() else None
 
     screened_path = results / "screen_partitions.parquet"
+    partitions = None
     if screened_path.exists():
         screened = pd.read_parquet(screened_path)
         if len(screened):
@@ -516,14 +578,19 @@ def build_report(results: Path, out: Path, config: dict | None = None) -> list[P
                 written.append(figure_mid_sum_band(partitions, out))
                 written.append(figure_fee_identity(partitions, out, rate=rate))
 
+    # Draw the crossover from two real brackets when the panel offers a pair that
+    # actually trades leg count off against dispersion.
+    pair = _crossover_pair(panel, partitions)
+    written.append(figure_fee_size_crossover(out, rate=rate, concentrated=pair[0],
+                                             dispersed=pair[1]))
+
     flags_path = results / "flags_triaged.parquet"
-    panel_path = results / "panel_prepared.parquet"
     if flags_path.exists():
         triaged = pd.read_parquet(flags_path)
         if len(triaged):
             written.append(figure_flag_funnel(triaged, out))
-            if panel_path.exists():
-                case = figure_stale_case(pd.read_parquet(panel_path), triaged, out)
+            if panel is not None:
+                case = figure_stale_case(panel, triaged, out)
                 if case:
                     written.append(case)
 

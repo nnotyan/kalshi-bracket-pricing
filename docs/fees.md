@@ -98,6 +98,12 @@ point for any pair.
 
 ![Assembly cost against order size](img/fee_size_crossover.png)
 
+The figure draws the same reversal from two brackets that were live on the venue
+at the same moment: a twenty-one-leg rate-cut-count bracket with almost all its
+mass on one outcome, against a six-leg FOMC dissent bracket with its mass spread
+across four. The many-legged one is three and a half times cheaper to assemble
+at size and three times more expensive at a single contract.
+
 The sawtooth in both curves is the round-up: as `C` grows, individual legs cross
 a cent boundary at different sizes, so the per-bracket cost falls in steps rather
 than smoothly. It is also why slicing a leg into clips is strictly worse than

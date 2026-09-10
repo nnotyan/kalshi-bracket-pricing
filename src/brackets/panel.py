@@ -29,9 +29,6 @@ import pandas as pd
 
 from .book import add_derived_quotes
 
-# Columns the screen needs from a prepared panel.
-_KEY = ["event_ticker", "ticker"]
-
 
 def prepare(panel: pd.DataFrame) -> pd.DataFrame:
     """Invert the book and attach per-leg staleness and depth annotations."""

@@ -130,6 +130,13 @@ resolution of the settlement source, so the decimal places on the strike grid
 *are* the tick. Every verdict carries the evidence that produced it, so "proven"
 is always readable as "proven under this stated assumption".
 
+That assumption is load-bearing and it is worth measuring rather than asserting.
+`brackets board --strict-support` re-runs the census accepting only what the
+rules text states: **64 partitions are proven by default and 30 under the strict
+model**. The other 34 are proven only because the strike grid was read as
+evidence of the settlement tick. It is a good rule. It is not a contract term,
+and a third of the screenable universe rests on it.
+
 The test is deliberately strict, and it produces verdicts that look pedantic. A
 Senate-seat bracket whose top leg is capped at 100 comes back `open_tail`,
 because nothing in the rules text says the Senate has a hundred seats. That is
@@ -270,6 +277,23 @@ python -m brackets.cli screen
 python -m brackets.cli report
 ```
 
+To see the arithmetic on a single bracket rather than the summary:
+
+```bash
+python -m brackets.cli explain KXHIGHNY-26SEP10
+```
+
+![One bracket, end to end](docs/img/shot_explain.png)
+
+That one cross-section contains most of the argument. Three of the six legs have
+no YES bid at all. The mids sum to exactly par, which is what a fairly quoted
+partition looks like. The ask sum is six cents over par — and the band is six
+cents wide, so the entire apparent overround is the spread and none of it is
+edge. At a one-contract clip the fee is seven cents, five of the six legs are
+paying the one-cent floor, and the bracket is thirteen cents underwater. At a
+thousand contracts the fee falls to 3.7c, which changes the number and not the
+conclusion.
+
 A sample panel is committed under `data/sample/`, so the screen runs without
 waiting on a collection window:
 
@@ -302,10 +326,10 @@ src/brackets/
   diagnostics.py  charging each raw flag to a cause
   simulate.py     synthetic panel with planted artefacts, for the tests
   report.py       figures
-  cli.py          board / discover / collect / screen / report
+  cli.py          board / discover / collect / screen / explain / report
 config/           universe and screen parameters
 docs/             fee algebra, classification rules, figures
-tests/            56 tests
+tests/            58 tests
 ```
 
 ## Limitations

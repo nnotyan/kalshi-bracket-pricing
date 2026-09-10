@@ -101,8 +101,8 @@ wrong if you take the grouping at face value.
 **A ladder is not a partition.** "Bitcoin above 70,100", "above 70,200", "above
 70,300" are nested, not disjoint. Several settle YES at once. Nothing constrains
 them to sum to anything — the only constraint is that the sequence is monotone.
-Summing a 188-leg ladder against par produces an apparent short-side edge in the
-tens of dollars and means precisely nothing.
+Summing the eighty rungs of a Bitcoin ladder against par produces an apparent
+short-side edge of about thirty dollars, and means precisely nothing.
 
 ![Partition against ladder](docs/img/structure_taxonomy.png)
 
@@ -211,7 +211,123 @@ Details and the full algebra in [docs/fees.md](docs/fees.md).
 
 ## Results
 
-<!-- RESULTS -->
+The panel is **32,470 quotes** — 382 legs across 28 events, polled once a minute
+for 85 minutes on the afternoon of 10 September 2026. The mix is deliberate:
+seven six-leg temperature brackets quoted tight and two-sided all day, seven
+large brackets on prices and indices running to thirty legs, four partitions
+whose legs are disjoint but leave outcomes unlisted, and three threshold ladders
+that exist to be excluded.
+
+Two sanity checks first, because everything downstream depends on them. The
+derived asks were compared against Kalshi's own published asks on all 29,106
+quotes with a non-empty opposite side: **zero disagreements**. And of 2,380
+event-minutes, **none** had to be dropped for an incomplete cross-section — the
+collector never returned a partial bracket, so no flag below is an artefact of a
+dropped request.
+
+![The screen output](docs/img/shot_screen.png)
+
+### The band grows with leg count even as quoting improves
+
+The clearest single result. Grouping the partitions by size:
+
+| legs | median band half-width | median half-spread per leg |
+|---|---|---|
+| 6–7 | 5.00c | 0.83c |
+| 10–15 | 6.00c | 0.53c |
+| 18–30 | 11.05c | 0.48c |
+
+The thirty-leg brackets are quoted **tighter per leg** than the six-leg ones —
+half the half-spread — and their no-arbitrage band is still more than twice as
+wide, because the band is paid once per leg. This is why a raw overround number
+is close to meaningless on its own, and why every flag is reported in units of
+its own band.
+
+![Band half-width against leg count](docs/img/band_vs_legs.png)
+
+The band also does its job. A proven partition's mid sum sits inside its own band
+essentially all the time; a partition whose legs do not cover the outcome space
+sits persistently outside it, which looks identical in the arithmetic and is not
+a trade.
+
+![Two brackets against their bands](docs/img/mid_sum_band.png)
+
+### 779 raw flags, none of them money
+
+A structure-blind screen — sum the legs, compare to par, flag anything that
+clears — fires on **779 of 2,380 event-minutes, 32.7%**. Charging each flag to
+the first cause that applies:
+
+![What the raw flags actually were](docs/img/flag_funnel.png)
+
+| cause | all events | competitively quoted only |
+|---|---|---|
+| not a partition (ladder) | 255 (32.7%) | — |
+| legs do not cover the outcome space | 255 (32.7%) | 255 (56.8%) |
+| stale leg | 244 (31.3%) | 181 (40.3%) |
+| no depth on the trading side | 19 (2.4%) | 7 (1.6%) |
+| real, but smaller than the fee | 6 (0.8%) | 6 (1.3%) |
+| **survives** | **0** | **0** |
+
+Restricted to the events that are competitively quoted — tight, deep and
+two-sided as a matter of course, so a flag on one is not just a wide book —
+**97.1% of raw flags are a stale quote or a mis-assembled bracket**. Nothing
+survived at any of the five clip sizes.
+
+Ranking the flags by size rather than counting them tells the same story more
+bluntly:
+
+| cause | largest example | gross | band | × band |
+|---|---|---|---|---|
+| not a partition | KXBTCD-26SEP1017 | 3099c | 43.5c | 71.2 |
+| legs do not cover | KXFOMCDISSENTCOUNT-26SEP | 5.0c | 5.0c | 1.0 |
+| stale leg | KXHIGHAUS-26SEP10 | 5.0c | 5.0c | 1.0 |
+| no depth | KXHIGHAUS-26SEP11 | 4.0c | 7.0c | 0.6 |
+| smaller than the fee | KXGDPYEAR-34 | 2.0c | 21.5c | 0.1 |
+
+The ladder is in a category of its own: summing eighty nested Bitcoin thresholds
+against par shows an apparent **$30.99** short-side edge, seventy-one times its
+own band, on 255 separate minutes. It is not an edge, it is a category error, and
+it is the single largest thing a naive screen would find. Once it is excluded, no
+flag of any kind clears its own band by more than a factor of one.
+
+That short-side dominance is general, not incidental: 571 of the 779 flags are
+short-side. Nested ladders and brackets missing a tail both make the bid sum look
+too high, and neither is a trade.
+
+### What staleness actually looks like
+
+The stale legs are not marginal. The worst had not moved either bid in **84
+minutes** — the entire sample. The instructive case is a leg that was quoting and
+then stopped: Austin's 96–97° bucket sat pinned at a bid of 5c for 43 minutes
+while the top leg of the same bracket swung between 55c and 63c and every other
+leg re-priced around it. The bid sum crossed par repeatedly during the stretch.
+
+![One leg stops quoting](docs/img/stale_case.png)
+
+### The one real dislocation, and what the fee did to it
+
+Six event-minutes produced a gross edge that survived structure, staleness and
+depth, and then died to the fee. The largest was `KXGDPYEAR-34`, a fourteen-leg
+bracket on 2034 US real GDP growth: the whole bracket could be bought for **98c**
+against a dollar that one leg is certain to pay. A two-cent gross edge, on a
+bracket quoted with a 21.5-cent band, with all fourteen legs deep enough to fill.
+
+It loses money at every size. The implied distribution has a Gini-Simpson index
+of 0.91 — about as dispersed as a fourteen-leg bracket can be — so the fee is
+`7% × 0.91 = 6.4c` per bracket at scale, and 12c at a single contract. Net −4.25c
+at a thousand contracts, −12c at one.
+
+That is the whole project in one line: the edge was real, the arithmetic was
+right, and the dispersion of the bracket made it three times too expensive to
+take.
+
+### The ladders were internally consistent
+
+Zero monotonicity violations across 85 minutes of three ladders, including an
+eighty-rung Bitcoin ladder. Not once did a higher threshold bid above a lower
+threshold's ask. Whatever else is true of these books, the market makers running
+them are not letting the ordering break.
 
 ## How the pipeline fits together
 
@@ -285,14 +401,26 @@ python -m brackets.cli explain KXHIGHNY-26SEP10
 
 ![One bracket, end to end](docs/img/shot_explain.png)
 
-That one cross-section contains most of the argument. Three of the six legs have
-no YES bid at all. The mids sum to exactly par, which is what a fairly quoted
-partition looks like. The ask sum is six cents over par — and the band is six
-cents wide, so the entire apparent overround is the spread and none of it is
-edge. At a one-contract clip the fee is seven cents, five of the six legs are
-paying the one-cent floor, and the bracket is thirteen cents underwater. At a
-thousand contracts the fee falls to 3.7c, which changes the number and not the
-conclusion.
+That one cross-section contains most of the argument.
+
+Three of the six legs have no YES bid at all — nobody wants 89° or hotter in New
+York in September — and two of those have not moved in 84 minutes, the whole
+sample. They still show tens of thousands of contracts on the offer, which is
+what a deep book on a leg nobody wants looks like.
+
+The mids sum to 101.5 against a par of 100, and the band runs from 92.5 to
+107.5, so the bracket is nowhere near either edge. Buying the whole thing costs
+109c to receive a dollar; selling it returns 94c against the dollar you then owe.
+Both sides lose by roughly the spread, which is the normal state of a fairly
+quoted partition.
+
+The fee columns show the size effect in isolation. At a single contract the fee
+is 8c a bracket with four of the six legs paying the one-cent floor; by fifty
+contracts the floor has stopped binding entirely and the fee settles at 4.20c.
+The diversity identity predicts `7% × 0.587 = 4.11c`, and the remaining 2% is
+the away-from-par correction — the ask sum here is 109c rather than 100c, and
+[docs/fees.md](docs/fees.md) works through why that shifts the identity by
+exactly this much. It changes the number and not the conclusion.
 
 A sample panel is committed under `data/sample/`, so the screen runs without
 waiting on a collection window:

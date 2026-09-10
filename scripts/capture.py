@@ -24,8 +24,10 @@ SHOTS = [
      "$ brackets board"),
     ("screen", ["screen", "--panel", "data/quotes", "--out", "results"],
      "shot_screen.png", "$ brackets screen"),
-    ("explain", ["explain", "KXHIGHNY-26SEP10"], "shot_explain.png",
-     "$ brackets explain KXHIGHNY-26SEP10"),
+    # Pinned to a fixed minute so the figure and the prose describing it cannot
+    # drift apart when the panel is extended.
+    ("explain", ["explain", "KXHIGHNY-26SEP10", "--at", "2026-09-10 17:59"],
+     "shot_explain.png", "$ brackets explain KXHIGHNY-26SEP10 --at '2026-09-10 17:59'"),
 ]
 
 

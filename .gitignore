@@ -13,4 +13,4 @@ results/
 
 # Full-board census output: regenerate with `brackets board`
 data/universe_all.json
-data/collect.log
+data/*.log

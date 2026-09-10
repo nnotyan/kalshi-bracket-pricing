@@ -1,0 +1,3324 @@
+{
+  "generated_at": "2026-09-10T16:31:45+00:00",
+  "count": 28,
+  "events": [
+    {
+      "event_ticker": "KXHIGHNY-26SEP10",
+      "series_ticker": "KXHIGHNY",
+      "title": "Highest temperature in New York City on Sep 10, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 57757.380000000005,
+      "close_time": "2026-09-11T05:00:00Z",
+      "tickers": [
+        "KXHIGHNY-26SEP10-T85",
+        "KXHIGHNY-26SEP10-B85.5",
+        "KXHIGHNY-26SEP10-B87.5",
+        "KXHIGHNY-26SEP10-B89.5",
+        "KXHIGHNY-26SEP10-B91.5",
+        "KXHIGHNY-26SEP10-T92"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHNY-26SEP10-T85",
+          "lo": null,
+          "hi": 85.0,
+          "label": "84\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHNY-26SEP10-B85.5",
+          "lo": 85.0,
+          "hi": 86.0,
+          "label": "85\u00b0 to 86\u00b0"
+        },
+        {
+          "ticker": "KXHIGHNY-26SEP10-B87.5",
+          "lo": 87.0,
+          "hi": 88.0,
+          "label": "87\u00b0 to 88\u00b0"
+        },
+        {
+          "ticker": "KXHIGHNY-26SEP10-B89.5",
+          "lo": 89.0,
+          "hi": 90.0,
+          "label": "89\u00b0 to 90\u00b0"
+        },
+        {
+          "ticker": "KXHIGHNY-26SEP10-B91.5",
+          "lo": 91.0,
+          "hi": 92.0,
+          "label": "91\u00b0 to 92\u00b0"
+        },
+        {
+          "ticker": "KXHIGHNY-26SEP10-T92",
+          "lo": 92.0,
+          "hi": null,
+          "label": "93\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHNY-26SEP11",
+      "series_ticker": "KXHIGHNY",
+      "title": "Highest temperature in New York City on Sep 11, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 1905.44,
+      "close_time": "2026-09-12T05:00:00Z",
+      "tickers": [
+        "KXHIGHNY-26SEP11-T79",
+        "KXHIGHNY-26SEP11-B79.5",
+        "KXHIGHNY-26SEP11-B81.5",
+        "KXHIGHNY-26SEP11-B83.5",
+        "KXHIGHNY-26SEP11-B85.5",
+        "KXHIGHNY-26SEP11-T86"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHNY-26SEP11-T79",
+          "lo": null,
+          "hi": 79.0,
+          "label": "78\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHNY-26SEP11-B79.5",
+          "lo": 79.0,
+          "hi": 80.0,
+          "label": "79\u00b0 to 80\u00b0"
+        },
+        {
+          "ticker": "KXHIGHNY-26SEP11-B81.5",
+          "lo": 81.0,
+          "hi": 82.0,
+          "label": "81\u00b0 to 82\u00b0"
+        },
+        {
+          "ticker": "KXHIGHNY-26SEP11-B83.5",
+          "lo": 83.0,
+          "hi": 84.0,
+          "label": "83\u00b0 to 84\u00b0"
+        },
+        {
+          "ticker": "KXHIGHNY-26SEP11-B85.5",
+          "lo": 85.0,
+          "hi": 86.0,
+          "label": "85\u00b0 to 86\u00b0"
+        },
+        {
+          "ticker": "KXHIGHNY-26SEP11-T86",
+          "lo": 86.0,
+          "hi": null,
+          "label": "87\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHCHI-26SEP10",
+      "series_ticker": "KXHIGHCHI",
+      "title": "Highest temperature in Chicago on Sep 10, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 39410.03999999999,
+      "close_time": "2026-09-11T06:00:00Z",
+      "tickers": [
+        "KXHIGHCHI-26SEP10-T75",
+        "KXHIGHCHI-26SEP10-B75.5",
+        "KXHIGHCHI-26SEP10-B77.5",
+        "KXHIGHCHI-26SEP10-B79.5",
+        "KXHIGHCHI-26SEP10-B81.5",
+        "KXHIGHCHI-26SEP10-T82"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHCHI-26SEP10-T75",
+          "lo": null,
+          "hi": 75.0,
+          "label": "74\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHCHI-26SEP10-B75.5",
+          "lo": 75.0,
+          "hi": 76.0,
+          "label": "75\u00b0 to 76\u00b0"
+        },
+        {
+          "ticker": "KXHIGHCHI-26SEP10-B77.5",
+          "lo": 77.0,
+          "hi": 78.0,
+          "label": "77\u00b0 to 78\u00b0"
+        },
+        {
+          "ticker": "KXHIGHCHI-26SEP10-B79.5",
+          "lo": 79.0,
+          "hi": 80.0,
+          "label": "79\u00b0 to 80\u00b0"
+        },
+        {
+          "ticker": "KXHIGHCHI-26SEP10-B81.5",
+          "lo": 81.0,
+          "hi": 82.0,
+          "label": "81\u00b0 to 82\u00b0"
+        },
+        {
+          "ticker": "KXHIGHCHI-26SEP10-T82",
+          "lo": 82.0,
+          "hi": null,
+          "label": "83\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHCHI-26SEP11",
+      "series_ticker": "KXHIGHCHI",
+      "title": "Highest temperature in Chicago on Sep 11, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 1485.53,
+      "close_time": "2026-09-12T06:00:00Z",
+      "tickers": [
+        "KXHIGHCHI-26SEP11-T76",
+        "KXHIGHCHI-26SEP11-B76.5",
+        "KXHIGHCHI-26SEP11-B78.5",
+        "KXHIGHCHI-26SEP11-B80.5",
+        "KXHIGHCHI-26SEP11-B82.5",
+        "KXHIGHCHI-26SEP11-T83"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHCHI-26SEP11-T76",
+          "lo": null,
+          "hi": 76.0,
+          "label": "75\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHCHI-26SEP11-B76.5",
+          "lo": 76.0,
+          "hi": 77.0,
+          "label": "76\u00b0 to 77\u00b0"
+        },
+        {
+          "ticker": "KXHIGHCHI-26SEP11-B78.5",
+          "lo": 78.0,
+          "hi": 79.0,
+          "label": "78\u00b0 to 79\u00b0"
+        },
+        {
+          "ticker": "KXHIGHCHI-26SEP11-B80.5",
+          "lo": 80.0,
+          "hi": 81.0,
+          "label": "80\u00b0 to 81\u00b0"
+        },
+        {
+          "ticker": "KXHIGHCHI-26SEP11-B82.5",
+          "lo": 82.0,
+          "hi": 83.0,
+          "label": "82\u00b0 to 83\u00b0"
+        },
+        {
+          "ticker": "KXHIGHCHI-26SEP11-T83",
+          "lo": 83.0,
+          "hi": null,
+          "label": "84\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHMIA-26SEP10",
+      "series_ticker": "KXHIGHMIA",
+      "title": "Highest temperature in Miami on Sep 10, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 95508.14,
+      "close_time": "2026-09-11T05:00:00Z",
+      "tickers": [
+        "KXHIGHMIA-26SEP10-T86",
+        "KXHIGHMIA-26SEP10-B86.5",
+        "KXHIGHMIA-26SEP10-B88.5",
+        "KXHIGHMIA-26SEP10-B90.5",
+        "KXHIGHMIA-26SEP10-B92.5",
+        "KXHIGHMIA-26SEP10-T93"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHMIA-26SEP10-T86",
+          "lo": null,
+          "hi": 86.0,
+          "label": "85\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHMIA-26SEP10-B86.5",
+          "lo": 86.0,
+          "hi": 87.0,
+          "label": "86\u00b0 to 87\u00b0"
+        },
+        {
+          "ticker": "KXHIGHMIA-26SEP10-B88.5",
+          "lo": 88.0,
+          "hi": 89.0,
+          "label": "88\u00b0 to 89\u00b0"
+        },
+        {
+          "ticker": "KXHIGHMIA-26SEP10-B90.5",
+          "lo": 90.0,
+          "hi": 91.0,
+          "label": "90\u00b0 to 91\u00b0"
+        },
+        {
+          "ticker": "KXHIGHMIA-26SEP10-B92.5",
+          "lo": 92.0,
+          "hi": 93.0,
+          "label": "92\u00b0 to 93\u00b0"
+        },
+        {
+          "ticker": "KXHIGHMIA-26SEP10-T93",
+          "lo": 93.0,
+          "hi": null,
+          "label": "94\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHMIA-26SEP11",
+      "series_ticker": "KXHIGHMIA",
+      "title": "Highest temperature in Miami on Sep 11, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 2574.37,
+      "close_time": "2026-09-12T05:00:00Z",
+      "tickers": [
+        "KXHIGHMIA-26SEP11-T86",
+        "KXHIGHMIA-26SEP11-B86.5",
+        "KXHIGHMIA-26SEP11-B88.5",
+        "KXHIGHMIA-26SEP11-B90.5",
+        "KXHIGHMIA-26SEP11-B92.5",
+        "KXHIGHMIA-26SEP11-T93"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHMIA-26SEP11-T86",
+          "lo": null,
+          "hi": 86.0,
+          "label": "85\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHMIA-26SEP11-B86.5",
+          "lo": 86.0,
+          "hi": 87.0,
+          "label": "86\u00b0 to 87\u00b0"
+        },
+        {
+          "ticker": "KXHIGHMIA-26SEP11-B88.5",
+          "lo": 88.0,
+          "hi": 89.0,
+          "label": "88\u00b0 to 89\u00b0"
+        },
+        {
+          "ticker": "KXHIGHMIA-26SEP11-B90.5",
+          "lo": 90.0,
+          "hi": 91.0,
+          "label": "90\u00b0 to 91\u00b0"
+        },
+        {
+          "ticker": "KXHIGHMIA-26SEP11-B92.5",
+          "lo": 92.0,
+          "hi": 93.0,
+          "label": "92\u00b0 to 93\u00b0"
+        },
+        {
+          "ticker": "KXHIGHMIA-26SEP11-T93",
+          "lo": 93.0,
+          "hi": null,
+          "label": "94\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHAUS-26SEP10",
+      "series_ticker": "KXHIGHAUS",
+      "title": "Highest temperature in Austin on Sep 10, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 23024.559999999998,
+      "close_time": "2026-09-11T06:00:00Z",
+      "tickers": [
+        "KXHIGHAUS-26SEP10-T95",
+        "KXHIGHAUS-26SEP10-B95.5",
+        "KXHIGHAUS-26SEP10-B97.5",
+        "KXHIGHAUS-26SEP10-B99.5",
+        "KXHIGHAUS-26SEP10-B101.5",
+        "KXHIGHAUS-26SEP10-T102"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHAUS-26SEP10-T95",
+          "lo": null,
+          "hi": 95.0,
+          "label": "94\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHAUS-26SEP10-B95.5",
+          "lo": 95.0,
+          "hi": 96.0,
+          "label": "95\u00b0 to 96\u00b0"
+        },
+        {
+          "ticker": "KXHIGHAUS-26SEP10-B97.5",
+          "lo": 97.0,
+          "hi": 98.0,
+          "label": "97\u00b0 to 98\u00b0"
+        },
+        {
+          "ticker": "KXHIGHAUS-26SEP10-B99.5",
+          "lo": 99.0,
+          "hi": 100.0,
+          "label": "99\u00b0 to 100\u00b0"
+        },
+        {
+          "ticker": "KXHIGHAUS-26SEP10-B101.5",
+          "lo": 101.0,
+          "hi": 102.0,
+          "label": "101\u00b0 to 102\u00b0"
+        },
+        {
+          "ticker": "KXHIGHAUS-26SEP10-T102",
+          "lo": 102.0,
+          "hi": null,
+          "label": "103\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHAUS-26SEP11",
+      "series_ticker": "KXHIGHAUS",
+      "title": "Highest temperature in Austin on Sep 11, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 1213.6100000000001,
+      "close_time": "2026-09-12T06:00:00Z",
+      "tickers": [
+        "KXHIGHAUS-26SEP11-T96",
+        "KXHIGHAUS-26SEP11-B96.5",
+        "KXHIGHAUS-26SEP11-B98.5",
+        "KXHIGHAUS-26SEP11-B100.5",
+        "KXHIGHAUS-26SEP11-B102.5",
+        "KXHIGHAUS-26SEP11-T103"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHAUS-26SEP11-T96",
+          "lo": null,
+          "hi": 96.0,
+          "label": "95\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHAUS-26SEP11-B96.5",
+          "lo": 96.0,
+          "hi": 97.0,
+          "label": "96\u00b0 to 97\u00b0"
+        },
+        {
+          "ticker": "KXHIGHAUS-26SEP11-B98.5",
+          "lo": 98.0,
+          "hi": 99.0,
+          "label": "98\u00b0 to 99\u00b0"
+        },
+        {
+          "ticker": "KXHIGHAUS-26SEP11-B100.5",
+          "lo": 100.0,
+          "hi": 101.0,
+          "label": "100\u00b0 to 101\u00b0"
+        },
+        {
+          "ticker": "KXHIGHAUS-26SEP11-B102.5",
+          "lo": 102.0,
+          "hi": 103.0,
+          "label": "102\u00b0 to 103\u00b0"
+        },
+        {
+          "ticker": "KXHIGHAUS-26SEP11-T103",
+          "lo": 103.0,
+          "hi": null,
+          "label": "104\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26SEP10",
+      "series_ticker": "KXHIGHLAX",
+      "title": "Highest temperature in Los Angeles on Sep 10, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 94694.98000000001,
+      "close_time": "2026-09-11T08:00:00Z",
+      "tickers": [
+        "KXHIGHLAX-26SEP10-T83",
+        "KXHIGHLAX-26SEP10-B83.5",
+        "KXHIGHLAX-26SEP10-B85.5",
+        "KXHIGHLAX-26SEP10-B87.5",
+        "KXHIGHLAX-26SEP10-B89.5",
+        "KXHIGHLAX-26SEP10-T90"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHLAX-26SEP10-T83",
+          "lo": null,
+          "hi": 83.0,
+          "label": "82\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHLAX-26SEP10-B83.5",
+          "lo": 83.0,
+          "hi": 84.0,
+          "label": "83\u00b0 to 84\u00b0"
+        },
+        {
+          "ticker": "KXHIGHLAX-26SEP10-B85.5",
+          "lo": 85.0,
+          "hi": 86.0,
+          "label": "85\u00b0 to 86\u00b0"
+        },
+        {
+          "ticker": "KXHIGHLAX-26SEP10-B87.5",
+          "lo": 87.0,
+          "hi": 88.0,
+          "label": "87\u00b0 to 88\u00b0"
+        },
+        {
+          "ticker": "KXHIGHLAX-26SEP10-B89.5",
+          "lo": 89.0,
+          "hi": 90.0,
+          "label": "89\u00b0 to 90\u00b0"
+        },
+        {
+          "ticker": "KXHIGHLAX-26SEP10-T90",
+          "lo": 90.0,
+          "hi": null,
+          "label": "91\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHLAX-26SEP11",
+      "series_ticker": "KXHIGHLAX",
+      "title": "Highest temperature in Los Angeles on Sep 11, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 3653.55,
+      "close_time": "2026-09-12T08:00:00Z",
+      "tickers": [
+        "KXHIGHLAX-26SEP11-T78",
+        "KXHIGHLAX-26SEP11-B78.5",
+        "KXHIGHLAX-26SEP11-B80.5",
+        "KXHIGHLAX-26SEP11-B82.5",
+        "KXHIGHLAX-26SEP11-B84.5",
+        "KXHIGHLAX-26SEP11-T85"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHLAX-26SEP11-T78",
+          "lo": null,
+          "hi": 78.0,
+          "label": "77\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHLAX-26SEP11-B78.5",
+          "lo": 78.0,
+          "hi": 79.0,
+          "label": "78\u00b0 to 79\u00b0"
+        },
+        {
+          "ticker": "KXHIGHLAX-26SEP11-B80.5",
+          "lo": 80.0,
+          "hi": 81.0,
+          "label": "80\u00b0 to 81\u00b0"
+        },
+        {
+          "ticker": "KXHIGHLAX-26SEP11-B82.5",
+          "lo": 82.0,
+          "hi": 83.0,
+          "label": "82\u00b0 to 83\u00b0"
+        },
+        {
+          "ticker": "KXHIGHLAX-26SEP11-B84.5",
+          "lo": 84.0,
+          "hi": 85.0,
+          "label": "84\u00b0 to 85\u00b0"
+        },
+        {
+          "ticker": "KXHIGHLAX-26SEP11-T85",
+          "lo": 85.0,
+          "hi": null,
+          "label": "86\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHDEN-26SEP10",
+      "series_ticker": "KXHIGHDEN",
+      "title": "Highest temperature in Denver on Sep 10, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 10921.320000000002,
+      "close_time": "2026-09-11T07:00:00Z",
+      "tickers": [
+        "KXHIGHDEN-26SEP10-T86",
+        "KXHIGHDEN-26SEP10-B86.5",
+        "KXHIGHDEN-26SEP10-B88.5",
+        "KXHIGHDEN-26SEP10-B90.5",
+        "KXHIGHDEN-26SEP10-B92.5",
+        "KXHIGHDEN-26SEP10-T93"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHDEN-26SEP10-T86",
+          "lo": null,
+          "hi": 86.0,
+          "label": "85\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHDEN-26SEP10-B86.5",
+          "lo": 86.0,
+          "hi": 87.0,
+          "label": "86\u00b0 to 87\u00b0"
+        },
+        {
+          "ticker": "KXHIGHDEN-26SEP10-B88.5",
+          "lo": 88.0,
+          "hi": 89.0,
+          "label": "88\u00b0 to 89\u00b0"
+        },
+        {
+          "ticker": "KXHIGHDEN-26SEP10-B90.5",
+          "lo": 90.0,
+          "hi": 91.0,
+          "label": "90\u00b0 to 91\u00b0"
+        },
+        {
+          "ticker": "KXHIGHDEN-26SEP10-B92.5",
+          "lo": 92.0,
+          "hi": 93.0,
+          "label": "92\u00b0 to 93\u00b0"
+        },
+        {
+          "ticker": "KXHIGHDEN-26SEP10-T93",
+          "lo": 93.0,
+          "hi": null,
+          "label": "94\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHDEN-26SEP11",
+      "series_ticker": "KXHIGHDEN",
+      "title": "Highest temperature in Denver on Sep 11, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 333.34,
+      "close_time": "2026-09-12T07:00:00Z",
+      "tickers": [
+        "KXHIGHDEN-26SEP11-T87",
+        "KXHIGHDEN-26SEP11-B87.5",
+        "KXHIGHDEN-26SEP11-B89.5",
+        "KXHIGHDEN-26SEP11-B91.5",
+        "KXHIGHDEN-26SEP11-B93.5",
+        "KXHIGHDEN-26SEP11-T94"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHDEN-26SEP11-T87",
+          "lo": null,
+          "hi": 87.0,
+          "label": "86\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHDEN-26SEP11-B87.5",
+          "lo": 87.0,
+          "hi": 88.0,
+          "label": "87\u00b0 to 88\u00b0"
+        },
+        {
+          "ticker": "KXHIGHDEN-26SEP11-B89.5",
+          "lo": 89.0,
+          "hi": 90.0,
+          "label": "89\u00b0 to 90\u00b0"
+        },
+        {
+          "ticker": "KXHIGHDEN-26SEP11-B91.5",
+          "lo": 91.0,
+          "hi": 92.0,
+          "label": "91\u00b0 to 92\u00b0"
+        },
+        {
+          "ticker": "KXHIGHDEN-26SEP11-B93.5",
+          "lo": 93.0,
+          "hi": 94.0,
+          "label": "93\u00b0 to 94\u00b0"
+        },
+        {
+          "ticker": "KXHIGHDEN-26SEP11-T94",
+          "lo": 94.0,
+          "hi": null,
+          "label": "95\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHPHIL-26SEP10",
+      "series_ticker": "KXHIGHPHIL",
+      "title": "Highest temperature in Philadelphia on Sep 10, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 11590.01,
+      "close_time": "2026-09-11T05:00:00Z",
+      "tickers": [
+        "KXHIGHPHIL-26SEP10-T84",
+        "KXHIGHPHIL-26SEP10-B84.5",
+        "KXHIGHPHIL-26SEP10-B86.5",
+        "KXHIGHPHIL-26SEP10-B88.5",
+        "KXHIGHPHIL-26SEP10-B90.5",
+        "KXHIGHPHIL-26SEP10-T91"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHPHIL-26SEP10-T84",
+          "lo": null,
+          "hi": 84.0,
+          "label": "83\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHPHIL-26SEP10-B84.5",
+          "lo": 84.0,
+          "hi": 85.0,
+          "label": "84\u00b0 to 85\u00b0"
+        },
+        {
+          "ticker": "KXHIGHPHIL-26SEP10-B86.5",
+          "lo": 86.0,
+          "hi": 87.0,
+          "label": "86\u00b0 to 87\u00b0"
+        },
+        {
+          "ticker": "KXHIGHPHIL-26SEP10-B88.5",
+          "lo": 88.0,
+          "hi": 89.0,
+          "label": "88\u00b0 to 89\u00b0"
+        },
+        {
+          "ticker": "KXHIGHPHIL-26SEP10-B90.5",
+          "lo": 90.0,
+          "hi": 91.0,
+          "label": "90\u00b0 to 91\u00b0"
+        },
+        {
+          "ticker": "KXHIGHPHIL-26SEP10-T91",
+          "lo": 91.0,
+          "hi": null,
+          "label": "92\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHIGHPHIL-26SEP11",
+      "series_ticker": "KXHIGHPHIL",
+      "title": "Highest temperature in Philadelphia on Sep 11, 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 6,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "6 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 452.68000000000006,
+      "close_time": "2026-09-12T05:00:00Z",
+      "tickers": [
+        "KXHIGHPHIL-26SEP11-T79",
+        "KXHIGHPHIL-26SEP11-B79.5",
+        "KXHIGHPHIL-26SEP11-B81.5",
+        "KXHIGHPHIL-26SEP11-B83.5",
+        "KXHIGHPHIL-26SEP11-B85.5",
+        "KXHIGHPHIL-26SEP11-T86"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHIGHPHIL-26SEP11-T79",
+          "lo": null,
+          "hi": 79.0,
+          "label": "78\u00b0 or below"
+        },
+        {
+          "ticker": "KXHIGHPHIL-26SEP11-B79.5",
+          "lo": 79.0,
+          "hi": 80.0,
+          "label": "79\u00b0 to 80\u00b0"
+        },
+        {
+          "ticker": "KXHIGHPHIL-26SEP11-B81.5",
+          "lo": 81.0,
+          "hi": 82.0,
+          "label": "81\u00b0 to 82\u00b0"
+        },
+        {
+          "ticker": "KXHIGHPHIL-26SEP11-B83.5",
+          "lo": 83.0,
+          "hi": 84.0,
+          "label": "83\u00b0 to 84\u00b0"
+        },
+        {
+          "ticker": "KXHIGHPHIL-26SEP11-B85.5",
+          "lo": 85.0,
+          "hi": 86.0,
+          "label": "85\u00b0 to 86\u00b0"
+        },
+        {
+          "ticker": "KXHIGHPHIL-26SEP11-T86",
+          "lo": 86.0,
+          "hi": null,
+          "label": "87\u00b0 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXBTCY-27JAN0100",
+      "series_ticker": "KXBTCY",
+      "title": "Bitcoin price at the end of 2026",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 28,
+      "screenable": true,
+      "support": "continuous",
+      "evidence": [
+        "support: continuous (strikes are written to 2 decimal places, so the source resolves to 0.01)",
+        "28 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 106835.79,
+      "close_time": "2027-01-01T05:00:00Z",
+      "tickers": [
+        "KXBTCY-27JAN0100-T20000.00",
+        "KXBTCY-27JAN0100-B22500",
+        "KXBTCY-27JAN0100-B27500",
+        "KXBTCY-27JAN0100-B32500",
+        "KXBTCY-27JAN0100-B37500",
+        "KXBTCY-27JAN0100-B42500",
+        "KXBTCY-27JAN0100-B47500",
+        "KXBTCY-27JAN0100-B52500",
+        "KXBTCY-27JAN0100-B57500",
+        "KXBTCY-27JAN0100-B62500",
+        "KXBTCY-27JAN0100-B67500",
+        "KXBTCY-27JAN0100-B72500",
+        "KXBTCY-27JAN0100-B77500",
+        "KXBTCY-27JAN0100-B82500",
+        "KXBTCY-27JAN0100-B87500",
+        "KXBTCY-27JAN0100-B92500",
+        "KXBTCY-27JAN0100-B97500",
+        "KXBTCY-27JAN0100-B102500",
+        "KXBTCY-27JAN0100-B107500",
+        "KXBTCY-27JAN0100-B112500",
+        "KXBTCY-27JAN0100-B117500",
+        "KXBTCY-27JAN0100-B122500",
+        "KXBTCY-27JAN0100-B127500",
+        "KXBTCY-27JAN0100-B132500",
+        "KXBTCY-27JAN0100-B137500",
+        "KXBTCY-27JAN0100-B142500",
+        "KXBTCY-27JAN0100-B147500",
+        "KXBTCY-27JAN0100-T149999.99"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXBTCY-27JAN0100-T20000.00",
+          "lo": null,
+          "hi": 20000.0,
+          "label": "19,999.99 or below"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B22500",
+          "lo": 20000.0,
+          "hi": 24999.99,
+          "label": "20,000 to 24,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B27500",
+          "lo": 25000.0,
+          "hi": 29999.99,
+          "label": "25,000 to 29,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B32500",
+          "lo": 30000.0,
+          "hi": 34999.99,
+          "label": "30,000 to 34,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B37500",
+          "lo": 35000.0,
+          "hi": 39999.99,
+          "label": "35,000 to 39,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B42500",
+          "lo": 40000.0,
+          "hi": 44999.99,
+          "label": "40,000 to 44,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B47500",
+          "lo": 45000.0,
+          "hi": 49999.99,
+          "label": "45,000 to 49,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B52500",
+          "lo": 50000.0,
+          "hi": 54999.99,
+          "label": "50,000 to 54,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B57500",
+          "lo": 55000.0,
+          "hi": 59999.99,
+          "label": "55,000 to 59,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B62500",
+          "lo": 60000.0,
+          "hi": 64999.99,
+          "label": "60,000 to 64,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B67500",
+          "lo": 65000.0,
+          "hi": 69999.99,
+          "label": "65,000 to 69,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B72500",
+          "lo": 70000.0,
+          "hi": 74999.99,
+          "label": "70,000 to 74,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B77500",
+          "lo": 75000.0,
+          "hi": 79999.99,
+          "label": "75,000 to 79,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B82500",
+          "lo": 80000.0,
+          "hi": 84999.99,
+          "label": "80,000 to 84,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B87500",
+          "lo": 85000.0,
+          "hi": 89999.99,
+          "label": "85,000 to 89,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B92500",
+          "lo": 90000.0,
+          "hi": 94999.99,
+          "label": "90,000 to 94,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B97500",
+          "lo": 95000.0,
+          "hi": 99999.99,
+          "label": "95,000 to 99,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B102500",
+          "lo": 100000.0,
+          "hi": 104999.99,
+          "label": "100,000 to 104,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B107500",
+          "lo": 105000.0,
+          "hi": 109999.99,
+          "label": "105,000 to 109,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B112500",
+          "lo": 110000.0,
+          "hi": 114999.99,
+          "label": "110,000 to 114,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B117500",
+          "lo": 115000.0,
+          "hi": 119999.99,
+          "label": "115,000 to 119,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B122500",
+          "lo": 120000.0,
+          "hi": 124999.99,
+          "label": "120,000 to 124,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B127500",
+          "lo": 125000.0,
+          "hi": 129999.99,
+          "label": "125,000 to 129,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B132500",
+          "lo": 130000.0,
+          "hi": 134999.99,
+          "label": "130,000 to 134,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B137500",
+          "lo": 135000.0,
+          "hi": 139999.99,
+          "label": "135,000 to 139,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B142500",
+          "lo": 140000.0,
+          "hi": 144999.99,
+          "label": "140,000 to 144,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-B147500",
+          "lo": 145000.0,
+          "hi": 149999.99,
+          "label": "145,000 to 149,999.99"
+        },
+        {
+          "ticker": "KXBTCY-27JAN0100-T149999.99",
+          "lo": 149999.99,
+          "hi": null,
+          "label": "150,000 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXETHY-27JAN0100",
+      "series_ticker": "KXETHY",
+      "title": "Ethereum price at the end of 2026",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 18,
+      "screenable": true,
+      "support": "continuous",
+      "evidence": [
+        "support: continuous (strikes are written to 2 decimal places, so the source resolves to 0.01)",
+        "18 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 2352.71,
+      "close_time": "2027-01-01T05:00:00Z",
+      "tickers": [
+        "KXETHY-27JAN0100-T1000.00",
+        "KXETHY-27JAN0100-B1125",
+        "KXETHY-27JAN0100-B1375",
+        "KXETHY-27JAN0100-B1625",
+        "KXETHY-27JAN0100-B1875",
+        "KXETHY-27JAN0100-B2125",
+        "KXETHY-27JAN0100-B2375",
+        "KXETHY-27JAN0100-B2625",
+        "KXETHY-27JAN0100-B2875",
+        "KXETHY-27JAN0100-B3125",
+        "KXETHY-27JAN0100-B3375",
+        "KXETHY-27JAN0100-B3625",
+        "KXETHY-27JAN0100-B3875",
+        "KXETHY-27JAN0100-B4125",
+        "KXETHY-27JAN0100-B4375",
+        "KXETHY-27JAN0100-B4625",
+        "KXETHY-27JAN0100-B4875",
+        "KXETHY-27JAN0100-T4999.99"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXETHY-27JAN0100-T1000.00",
+          "lo": null,
+          "hi": 1000.0,
+          "label": "999.99 or below"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B1125",
+          "lo": 1000.0,
+          "hi": 1249.99,
+          "label": "1,000 to 1,249.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B1375",
+          "lo": 1250.0,
+          "hi": 1499.99,
+          "label": "1,250 to 1,499.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B1625",
+          "lo": 1500.0,
+          "hi": 1749.99,
+          "label": "1,500 to 1,749.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B1875",
+          "lo": 1750.0,
+          "hi": 1999.99,
+          "label": "1,750 to 1,999.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B2125",
+          "lo": 2000.0,
+          "hi": 2249.99,
+          "label": "2,000 to 2,249.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B2375",
+          "lo": 2250.0,
+          "hi": 2499.99,
+          "label": "2,250 to 2,499.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B2625",
+          "lo": 2500.0,
+          "hi": 2749.99,
+          "label": "2,500 to 2,749.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B2875",
+          "lo": 2750.0,
+          "hi": 2999.99,
+          "label": "2,750 to 2,999.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B3125",
+          "lo": 3000.0,
+          "hi": 3249.99,
+          "label": "3,000 to 3,249.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B3375",
+          "lo": 3250.0,
+          "hi": 3499.99,
+          "label": "3,250 to 3,499.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B3625",
+          "lo": 3500.0,
+          "hi": 3749.99,
+          "label": "3,500 to 3,749.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B3875",
+          "lo": 3750.0,
+          "hi": 3999.99,
+          "label": "3,750 to 3,999.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B4125",
+          "lo": 4000.0,
+          "hi": 4249.99,
+          "label": "4,000 to 4,249.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B4375",
+          "lo": 4250.0,
+          "hi": 4499.99,
+          "label": "4,250 to 4,499.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B4625",
+          "lo": 4500.0,
+          "hi": 4749.99,
+          "label": "4,500 to 4,749.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-B4875",
+          "lo": 4750.0,
+          "hi": 4999.99,
+          "label": "4,750 to 4,999.99"
+        },
+        {
+          "ticker": "KXETHY-27JAN0100-T4999.99",
+          "lo": 4999.99,
+          "hi": null,
+          "label": "5,000 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXINXY-26DEC31H1600",
+      "series_ticker": "KXINXY",
+      "title": "S&P close price end of 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 27,
+      "screenable": true,
+      "support": "continuous",
+      "evidence": [
+        "support: continuous (strikes are written to 2 decimal places, so the source resolves to 0.01)",
+        "27 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 47869.03999999999,
+      "close_time": "2026-12-31T21:00:00Z",
+      "tickers": [
+        "KXINXY-26DEC31H1600-T4000",
+        "KXINXY-26DEC31H1600-B4100",
+        "KXINXY-26DEC31H1600-B4300",
+        "KXINXY-26DEC31H1600-B4500",
+        "KXINXY-26DEC31H1600-B4700",
+        "KXINXY-26DEC31H1600-B4900",
+        "KXINXY-26DEC31H1600-B5100",
+        "KXINXY-26DEC31H1600-B5300",
+        "KXINXY-26DEC31H1600-B5500",
+        "KXINXY-26DEC31H1600-B5700",
+        "KXINXY-26DEC31H1600-B5900",
+        "KXINXY-26DEC31H1600-B6100",
+        "KXINXY-26DEC31H1600-B6300",
+        "KXINXY-26DEC31H1600-B6500",
+        "KXINXY-26DEC31H1600-B6700",
+        "KXINXY-26DEC31H1600-B6900",
+        "KXINXY-26DEC31H1600-B7100",
+        "KXINXY-26DEC31H1600-B7300",
+        "KXINXY-26DEC31H1600-B7500",
+        "KXINXY-26DEC31H1600-B7700",
+        "KXINXY-26DEC31H1600-B7900",
+        "KXINXY-26DEC31H1600-B8100",
+        "KXINXY-26DEC31H1600-B8300",
+        "KXINXY-26DEC31H1600-B8500",
+        "KXINXY-26DEC31H1600-B8700",
+        "KXINXY-26DEC31H1600-B8900",
+        "KXINXY-26DEC31H1600-T9000"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXINXY-26DEC31H1600-T4000",
+          "lo": null,
+          "hi": 4000.0,
+          "label": "3,999.99 or below"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B4100",
+          "lo": 4000.0,
+          "hi": 4199.99,
+          "label": "4,000 to 4,199.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B4300",
+          "lo": 4200.0,
+          "hi": 4399.99,
+          "label": "4,200 to 4,399.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B4500",
+          "lo": 4400.0,
+          "hi": 4599.99,
+          "label": "4,400 to 4,599.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B4700",
+          "lo": 4600.0,
+          "hi": 4799.99,
+          "label": "4,600 to 4,799.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B4900",
+          "lo": 4800.0,
+          "hi": 4999.99,
+          "label": "4,800 to 4,999.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B5100",
+          "lo": 5000.0,
+          "hi": 5199.99,
+          "label": "5,000 to 5,199.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B5300",
+          "lo": 5200.0,
+          "hi": 5399.99,
+          "label": "5,200 to 5,399.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B5500",
+          "lo": 5400.0,
+          "hi": 5599.99,
+          "label": "5,400 to 5,599.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B5700",
+          "lo": 5600.0,
+          "hi": 5799.99,
+          "label": "5,600 to 5,799.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B5900",
+          "lo": 5800.0,
+          "hi": 5999.99,
+          "label": "5,800 to 5,999.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B6100",
+          "lo": 6000.0,
+          "hi": 6199.99,
+          "label": "6,000 to 6,199.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B6300",
+          "lo": 6200.0,
+          "hi": 6399.99,
+          "label": "6,200 to 6,399.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B6500",
+          "lo": 6400.0,
+          "hi": 6599.99,
+          "label": "6,400 to 6,599.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B6700",
+          "lo": 6600.0,
+          "hi": 6799.99,
+          "label": "6,600 to 6,799.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B6900",
+          "lo": 6800.0,
+          "hi": 6999.99,
+          "label": "6,800 to 6,999.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B7100",
+          "lo": 7000.0,
+          "hi": 7199.99,
+          "label": "7,000 to 7,199.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B7300",
+          "lo": 7200.0,
+          "hi": 7399.99,
+          "label": "7,200 to 7,399.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B7500",
+          "lo": 7400.0,
+          "hi": 7599.99,
+          "label": "7,400 to 7,599.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B7700",
+          "lo": 7600.0,
+          "hi": 7799.99,
+          "label": "7,600 to 7,799.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B7900",
+          "lo": 7800.0,
+          "hi": 7999.99,
+          "label": "7,800 to 7,999.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B8100",
+          "lo": 8000.0,
+          "hi": 8199.99,
+          "label": "8,000 to 8,199.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B8300",
+          "lo": 8200.0,
+          "hi": 8399.99,
+          "label": "8,200 to 8,399.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B8500",
+          "lo": 8400.0,
+          "hi": 8599.99,
+          "label": "8,400 to 8,599.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B8700",
+          "lo": 8600.0,
+          "hi": 8799.99,
+          "label": "8,600 to 8,799.99"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-B8900",
+          "lo": 8800.0,
+          "hi": 9000.0,
+          "label": "8,800 to 9,000"
+        },
+        {
+          "ticker": "KXINXY-26DEC31H1600-T9000",
+          "lo": 9000.0,
+          "hi": null,
+          "label": "9,000.01 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXNASDAQ100Y-26DEC31H1600",
+      "series_ticker": "KXNASDAQ100Y",
+      "title": "Nasdaq-100 close price end of 2026?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 30,
+      "screenable": true,
+      "support": "continuous",
+      "evidence": [
+        "support: continuous (strikes are written to 2 decimal places, so the source resolves to 0.01)",
+        "30 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 6374.05,
+      "close_time": "2026-12-31T21:00:00Z",
+      "tickers": [
+        "KXNASDAQ100Y-26DEC31H1600-T19000",
+        "KXNASDAQ100Y-26DEC31H1600-B19250",
+        "KXNASDAQ100Y-26DEC31H1600-B19750",
+        "KXNASDAQ100Y-26DEC31H1600-B20250",
+        "KXNASDAQ100Y-26DEC31H1600-B20750",
+        "KXNASDAQ100Y-26DEC31H1600-B21250",
+        "KXNASDAQ100Y-26DEC31H1600-B21750",
+        "KXNASDAQ100Y-26DEC31H1600-B22250",
+        "KXNASDAQ100Y-26DEC31H1600-B22750",
+        "KXNASDAQ100Y-26DEC31H1600-B23250",
+        "KXNASDAQ100Y-26DEC31H1600-B23750",
+        "KXNASDAQ100Y-26DEC31H1600-B24250",
+        "KXNASDAQ100Y-26DEC31H1600-B24750",
+        "KXNASDAQ100Y-26DEC31H1600-B25250",
+        "KXNASDAQ100Y-26DEC31H1600-B25750",
+        "KXNASDAQ100Y-26DEC31H1600-B26250",
+        "KXNASDAQ100Y-26DEC31H1600-B26750",
+        "KXNASDAQ100Y-26DEC31H1600-B27250",
+        "KXNASDAQ100Y-26DEC31H1600-B27750",
+        "KXNASDAQ100Y-26DEC31H1600-B28250",
+        "KXNASDAQ100Y-26DEC31H1600-B28750",
+        "KXNASDAQ100Y-26DEC31H1600-B29250",
+        "KXNASDAQ100Y-26DEC31H1600-B29750",
+        "KXNASDAQ100Y-26DEC31H1600-B30250",
+        "KXNASDAQ100Y-26DEC31H1600-B30750",
+        "KXNASDAQ100Y-26DEC31H1600-B31250",
+        "KXNASDAQ100Y-26DEC31H1600-B31750",
+        "KXNASDAQ100Y-26DEC31H1600-B32250",
+        "KXNASDAQ100Y-26DEC31H1600-B32750",
+        "KXNASDAQ100Y-26DEC31H1600-T33000"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-T19000",
+          "lo": null,
+          "hi": 19000.0,
+          "label": "18,999.99 or below"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B19250",
+          "lo": 19000.0,
+          "hi": 19499.99,
+          "label": "19,000 to 19,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B19750",
+          "lo": 19500.0,
+          "hi": 19999.99,
+          "label": "19,500 to 19,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B20250",
+          "lo": 20000.0,
+          "hi": 20499.99,
+          "label": "20,000 to 20,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B20750",
+          "lo": 20500.0,
+          "hi": 20999.99,
+          "label": "20,500 to 20,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B21250",
+          "lo": 21000.0,
+          "hi": 21499.99,
+          "label": "21,000 to 21,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B21750",
+          "lo": 21500.0,
+          "hi": 21999.99,
+          "label": "21,500 to 21,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B22250",
+          "lo": 22000.0,
+          "hi": 22499.99,
+          "label": "22,000 to 22,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B22750",
+          "lo": 22500.0,
+          "hi": 22999.99,
+          "label": "22,500 to 22,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B23250",
+          "lo": 23000.0,
+          "hi": 23499.99,
+          "label": "23,000 to 23,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B23750",
+          "lo": 23500.0,
+          "hi": 23999.99,
+          "label": "23,500 to 23,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B24250",
+          "lo": 24000.0,
+          "hi": 24499.99,
+          "label": "24,000 to 24,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B24750",
+          "lo": 24500.0,
+          "hi": 24999.99,
+          "label": "24,500 to 24,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B25250",
+          "lo": 25000.0,
+          "hi": 25499.99,
+          "label": "25,000 to 25,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B25750",
+          "lo": 25500.0,
+          "hi": 25999.99,
+          "label": "25,500 to 25,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B26250",
+          "lo": 26000.0,
+          "hi": 26499.99,
+          "label": "26,000 to 26,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B26750",
+          "lo": 26500.0,
+          "hi": 26999.99,
+          "label": "26,500 to 26,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B27250",
+          "lo": 27000.0,
+          "hi": 27499.99,
+          "label": "27,000 to 27,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B27750",
+          "lo": 27500.0,
+          "hi": 27999.99,
+          "label": "27,500 to 27,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B28250",
+          "lo": 28000.0,
+          "hi": 28499.99,
+          "label": "28,000 to 28,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B28750",
+          "lo": 28500.0,
+          "hi": 28999.99,
+          "label": "28,500 to 28,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B29250",
+          "lo": 29000.0,
+          "hi": 29499.99,
+          "label": "29,000 to 29,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B29750",
+          "lo": 29500.0,
+          "hi": 29999.99,
+          "label": "29,500 to 29,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B30250",
+          "lo": 30000.0,
+          "hi": 30499.99,
+          "label": "30,000 to 30,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B30750",
+          "lo": 30500.0,
+          "hi": 30999.99,
+          "label": "30,500 to 30,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B31250",
+          "lo": 31000.0,
+          "hi": 31499.99,
+          "label": "31,000 to 31,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B31750",
+          "lo": 31500.0,
+          "hi": 31999.99,
+          "label": "31,500 to 31,999.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B32250",
+          "lo": 32000.0,
+          "hi": 32499.99,
+          "label": "32,000 to 32,499.99"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-B32750",
+          "lo": 32500.0,
+          "hi": 33000.0,
+          "label": "32,500 to 33,000"
+        },
+        {
+          "ticker": "KXNASDAQ100Y-26DEC31H1600-T33000",
+          "lo": 33000.0,
+          "hi": null,
+          "label": "33,000.01 or above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXGDPYEAR-34",
+      "series_ticker": "KXGDPYEAR",
+      "title": "US real GDP growth in 2034?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 14,
+      "screenable": true,
+      "support": "continuous",
+      "evidence": [
+        "support: continuous (strikes are written to 1 decimal places, so the source resolves to 0.1)",
+        "14 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 2482.7000000000007,
+      "close_time": "2035-02-28T13:29:00Z",
+      "tickers": [
+        "KXGDPYEAR-34-T0.1",
+        "KXGDPYEAR-34-B0.3",
+        "KXGDPYEAR-34-B0.8",
+        "KXGDPYEAR-34-B1.3",
+        "KXGDPYEAR-34-B1.8",
+        "KXGDPYEAR-34-B2.3",
+        "KXGDPYEAR-34-B2.8",
+        "KXGDPYEAR-34-B3.3",
+        "KXGDPYEAR-34-B3.8",
+        "KXGDPYEAR-34-B4.3",
+        "KXGDPYEAR-34-B4.8",
+        "KXGDPYEAR-34-B5.3",
+        "KXGDPYEAR-34-B5.8",
+        "KXGDPYEAR-34-T6.0"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXGDPYEAR-34-T0.1",
+          "lo": null,
+          "hi": 0.1,
+          "label": "0.0% or Below"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-B0.3",
+          "lo": 0.1,
+          "hi": 0.5,
+          "label": "0.1% to 0.5%"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-B0.8",
+          "lo": 0.6,
+          "hi": 1.0,
+          "label": "0.6% to 1.0%"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-B1.3",
+          "lo": 1.1,
+          "hi": 1.5,
+          "label": "1.1% to 1.5%"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-B1.8",
+          "lo": 1.6,
+          "hi": 2.0,
+          "label": "1.6% to 2.0%"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-B2.3",
+          "lo": 2.1,
+          "hi": 2.5,
+          "label": "2.1% to 2.5%"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-B2.8",
+          "lo": 2.6,
+          "hi": 3.0,
+          "label": "2.6% to 3.0%"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-B3.3",
+          "lo": 3.1,
+          "hi": 3.5,
+          "label": "3.1% to 3.5%"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-B3.8",
+          "lo": 3.6,
+          "hi": 4.0,
+          "label": "3.6% to 4.0%"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-B4.3",
+          "lo": 4.1,
+          "hi": 4.5,
+          "label": "4.1% to 4.5%"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-B4.8",
+          "lo": 4.6,
+          "hi": 5.0,
+          "label": "4.6% to 5.0%"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-B5.3",
+          "lo": 5.1,
+          "hi": 5.5,
+          "label": "5.1% to 5.5%"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-B5.8",
+          "lo": 5.6,
+          "hi": 6.0,
+          "label": "5.6% to 6.0%"
+        },
+        {
+          "ticker": "KXGDPYEAR-34-T6.0",
+          "lo": 6.0,
+          "hi": null,
+          "label": "6.1% or Above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXSOFRD-26SEP11",
+      "series_ticker": "KXSOFRD",
+      "title": "SOFR for September 10, 2026",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 7,
+      "screenable": true,
+      "support": "continuous",
+      "evidence": [
+        "support: continuous (strikes are written to 2 decimal places, so the source resolves to 0.01)",
+        "7 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 1759.0,
+      "close_time": "2026-09-11T11:59:00Z",
+      "tickers": [
+        "KXSOFRD-26SEP11-T3.60",
+        "KXSOFRD-26SEP11-E3.61",
+        "KXSOFRD-26SEP11-E3.62",
+        "KXSOFRD-26SEP11-E3.63",
+        "KXSOFRD-26SEP11-E3.64",
+        "KXSOFRD-26SEP11-E3.65",
+        "KXSOFRD-26SEP11-T3.66"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXSOFRD-26SEP11-T3.60",
+          "lo": null,
+          "hi": 3.6,
+          "label": "3.60% or Below"
+        },
+        {
+          "ticker": "KXSOFRD-26SEP11-E3.61",
+          "lo": 3.61,
+          "hi": 3.61,
+          "label": "Exactly 3.61%"
+        },
+        {
+          "ticker": "KXSOFRD-26SEP11-E3.62",
+          "lo": 3.62,
+          "hi": 3.62,
+          "label": "Exactly 3.62%"
+        },
+        {
+          "ticker": "KXSOFRD-26SEP11-E3.63",
+          "lo": 3.63,
+          "hi": 3.63,
+          "label": "Exactly 3.63%"
+        },
+        {
+          "ticker": "KXSOFRD-26SEP11-E3.64",
+          "lo": 3.64,
+          "hi": 3.64,
+          "label": "Exactly 3.64%"
+        },
+        {
+          "ticker": "KXSOFRD-26SEP11-E3.65",
+          "lo": 3.65,
+          "hi": 3.65,
+          "label": "Exactly 3.65%"
+        },
+        {
+          "ticker": "KXSOFRD-26SEP11-T3.66",
+          "lo": 3.66,
+          "hi": null,
+          "label": "3.66% or Above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "RSENATESEATS-27",
+      "series_ticker": "RSENATESEATS",
+      "title": "How many Senate seats will Republicans hold after the Midterms?",
+      "shape": "partition",
+      "exhaustive": "proven",
+      "n_legs": 15,
+      "screenable": true,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "15 legs tile the support with both tails open, so exactly one settles YES"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 2345.34,
+      "close_time": "2027-02-01T15:00:00Z",
+      "tickers": [
+        "RSENATESEATS-27-B45",
+        "RSENATESEATS-27-E45",
+        "RSENATESEATS-27-E46",
+        "RSENATESEATS-27-E47",
+        "RSENATESEATS-27-E48",
+        "RSENATESEATS-27-E49",
+        "RSENATESEATS-27-E50",
+        "RSENATESEATS-27-E51",
+        "RSENATESEATS-27-E52",
+        "RSENATESEATS-27-E53",
+        "RSENATESEATS-27-E54",
+        "RSENATESEATS-27-E55",
+        "RSENATESEATS-27-E56",
+        "RSENATESEATS-27-E57",
+        "RSENATESEATS-27-A57"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "RSENATESEATS-27-B45",
+          "lo": null,
+          "hi": 45.0,
+          "label": "Below 45"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E45",
+          "lo": 45.0,
+          "hi": 45.0,
+          "label": "45"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E46",
+          "lo": 46.0,
+          "hi": 46.0,
+          "label": "46"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E47",
+          "lo": 47.0,
+          "hi": 47.0,
+          "label": "47"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E48",
+          "lo": 48.0,
+          "hi": 48.0,
+          "label": "48"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E49",
+          "lo": 49.0,
+          "hi": 49.0,
+          "label": "49"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E50",
+          "lo": 50.0,
+          "hi": 50.0,
+          "label": "50"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E51",
+          "lo": 51.0,
+          "hi": 51.0,
+          "label": "51"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E52",
+          "lo": 52.0,
+          "hi": 52.0,
+          "label": "52"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E53",
+          "lo": 53.0,
+          "hi": 53.0,
+          "label": "53"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E54",
+          "lo": 54.0,
+          "hi": 54.0,
+          "label": "54"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E55",
+          "lo": 55.0,
+          "hi": 55.0,
+          "label": "55"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E56",
+          "lo": 56.0,
+          "hi": 56.0,
+          "label": "56"
+        },
+        {
+          "ticker": "RSENATESEATS-27-E57",
+          "lo": 57.0,
+          "hi": 57.0,
+          "label": "57"
+        },
+        {
+          "ticker": "RSENATESEATS-27-A57",
+          "lo": 57.0,
+          "hi": null,
+          "label": "Above 57"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXRATECUTCOUNT-26DEC31",
+      "series_ticker": "KXRATECUTCOUNT",
+      "title": "Number of rate cuts in 2026?",
+      "shape": "partition",
+      "exhaustive": "open_tail",
+      "n_legs": 21,
+      "screenable": false,
+      "support": "integer",
+      "evidence": [
+        "support: integer (every strike is written as a whole number)",
+        "outcomes above 20 are not listed, and nothing in the settlement terms bounds the variable there"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 45776.119999999995,
+      "close_time": "2027-01-01T04:59:00Z",
+      "tickers": [
+        "KXRATECUTCOUNT-26DEC31-T0",
+        "KXRATECUTCOUNT-26DEC31-T1",
+        "KXRATECUTCOUNT-26DEC31-T2",
+        "KXRATECUTCOUNT-26DEC31-T3",
+        "KXRATECUTCOUNT-26DEC31-T4",
+        "KXRATECUTCOUNT-26DEC31-T5",
+        "KXRATECUTCOUNT-26DEC31-T6",
+        "KXRATECUTCOUNT-26DEC31-T7",
+        "KXRATECUTCOUNT-26DEC31-T8",
+        "KXRATECUTCOUNT-26DEC31-T9",
+        "KXRATECUTCOUNT-26DEC31-T10",
+        "KXRATECUTCOUNT-26DEC31-T11",
+        "KXRATECUTCOUNT-26DEC31-T12",
+        "KXRATECUTCOUNT-26DEC31-T13",
+        "KXRATECUTCOUNT-26DEC31-T14",
+        "KXRATECUTCOUNT-26DEC31-T15",
+        "KXRATECUTCOUNT-26DEC31-T16",
+        "KXRATECUTCOUNT-26DEC31-T17",
+        "KXRATECUTCOUNT-26DEC31-T18",
+        "KXRATECUTCOUNT-26DEC31-T19",
+        "KXRATECUTCOUNT-26DEC31-T20"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+          "lo": 0.0,
+          "hi": 0.0,
+          "label": "Exactly 0 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T1",
+          "lo": 1.0,
+          "hi": 1.0,
+          "label": "Exactly 1 cut"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T2",
+          "lo": 2.0,
+          "hi": 2.0,
+          "label": "Exactly 2 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T3",
+          "lo": 3.0,
+          "hi": 3.0,
+          "label": "Exactly 3 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T4",
+          "lo": 4.0,
+          "hi": 4.0,
+          "label": "Exactly 4 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T5",
+          "lo": 5.0,
+          "hi": 5.0,
+          "label": "Exactly 5 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T6",
+          "lo": 6.0,
+          "hi": 6.0,
+          "label": "Exactly 6 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T7",
+          "lo": 7.0,
+          "hi": 7.0,
+          "label": "Exactly 7 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T8",
+          "lo": 8.0,
+          "hi": 8.0,
+          "label": "Exactly 8 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T9",
+          "lo": 9.0,
+          "hi": 9.0,
+          "label": "Exactly 9 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T10",
+          "lo": 10.0,
+          "hi": 10.0,
+          "label": "Exactly 10 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T11",
+          "lo": 11.0,
+          "hi": 11.0,
+          "label": "Exactly 11 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T12",
+          "lo": 12.0,
+          "hi": 12.0,
+          "label": "Exactly 12 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T13",
+          "lo": 13.0,
+          "hi": 13.0,
+          "label": "Exactly 13 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T14",
+          "lo": 14.0,
+          "hi": 14.0,
+          "label": "Exactly 14 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T15",
+          "lo": 15.0,
+          "hi": 15.0,
+          "label": "Exactly 15 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T16",
+          "lo": 16.0,
+          "hi": 16.0,
+          "label": "Exactly 16 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T17",
+          "lo": 17.0,
+          "hi": 17.0,
+          "label": "Exactly 17 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T18",
+          "lo": 18.0,
+          "hi": 18.0,
+          "label": "Exactly 18 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T19",
+          "lo": 19.0,
+          "hi": 19.0,
+          "label": "Exactly 19 cuts"
+        },
+        {
+          "ticker": "KXRATECUTCOUNT-26DEC31-T20",
+          "lo": 20.0,
+          "hi": 20.0,
+          "label": "Exactly 20 cuts"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXDSENATESEATS-27",
+      "series_ticker": "KXDSENATESEATS",
+      "title": "How many Senate seats will Democrats hold after the Midterms?",
+      "shape": "partition",
+      "exhaustive": "open_tail",
+      "n_legs": 10,
+      "screenable": false,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "outcomes above 100 are not listed, and nothing in the settlement terms bounds the variable there"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 41735.21000000001,
+      "close_time": "2027-02-01T15:00:00Z",
+      "tickers": [
+        "KXDSENATESEATS-27-BELOW45",
+        "KXDSENATESEATS-27-45",
+        "KXDSENATESEATS-27-46",
+        "KXDSENATESEATS-27-47",
+        "KXDSENATESEATS-27-48",
+        "KXDSENATESEATS-27-49",
+        "KXDSENATESEATS-27-50",
+        "KXDSENATESEATS-27-51",
+        "KXDSENATESEATS-27-52",
+        "KXDSENATESEATS-27-ABOVE52"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXDSENATESEATS-27-BELOW45",
+          "lo": 0.0,
+          "hi": 44.0,
+          "label": "Below 45"
+        },
+        {
+          "ticker": "KXDSENATESEATS-27-45",
+          "lo": 45.0,
+          "hi": 45.0,
+          "label": "45"
+        },
+        {
+          "ticker": "KXDSENATESEATS-27-46",
+          "lo": 46.0,
+          "hi": 46.0,
+          "label": "46"
+        },
+        {
+          "ticker": "KXDSENATESEATS-27-47",
+          "lo": 47.0,
+          "hi": 47.0,
+          "label": "47"
+        },
+        {
+          "ticker": "KXDSENATESEATS-27-48",
+          "lo": 48.0,
+          "hi": 48.0,
+          "label": "48"
+        },
+        {
+          "ticker": "KXDSENATESEATS-27-49",
+          "lo": 49.0,
+          "hi": 49.0,
+          "label": "49"
+        },
+        {
+          "ticker": "KXDSENATESEATS-27-50",
+          "lo": 50.0,
+          "hi": 50.0,
+          "label": "50"
+        },
+        {
+          "ticker": "KXDSENATESEATS-27-51",
+          "lo": 51.0,
+          "hi": 51.0,
+          "label": "51"
+        },
+        {
+          "ticker": "KXDSENATESEATS-27-52",
+          "lo": 52.0,
+          "hi": 52.0,
+          "label": "52"
+        },
+        {
+          "ticker": "KXDSENATESEATS-27-ABOVE52",
+          "lo": 53.0,
+          "hi": 100.0,
+          "label": "Above 52"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXHOUSEPOPVOTEMARGIN-27NOV03",
+      "series_ticker": "KXHOUSEPOPVOTEMARGIN",
+      "title": "2026 Midterms: House popular vote margin of victory? (Generic ballot)",
+      "shape": "partition",
+      "exhaustive": "open_tail",
+      "n_legs": 10,
+      "screenable": false,
+      "support": "integer",
+      "evidence": [
+        "support: integer (every strike is written as a whole number)",
+        "outcomes below -1 and above 100 are not listed, and nothing in the settlement terms bounds the variable there"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 4597.579999999999,
+      "close_time": "2027-11-03T13:59:00Z",
+      "tickers": [
+        "KXHOUSEPOPVOTEMARGIN-27NOV03-B50",
+        "KXHOUSEPOPVOTEMARGIN-27NOV03-B1",
+        "KXHOUSEPOPVOTEMARGIN-27NOV03-B3",
+        "KXHOUSEPOPVOTEMARGIN-27NOV03-B5",
+        "KXHOUSEPOPVOTEMARGIN-27NOV03-B7",
+        "KXHOUSEPOPVOTEMARGIN-27NOV03-B9",
+        "KXHOUSEPOPVOTEMARGIN-27NOV03-B11",
+        "KXHOUSEPOPVOTEMARGIN-27NOV03-B13",
+        "KXHOUSEPOPVOTEMARGIN-27NOV03-B15",
+        "KXHOUSEPOPVOTEMARGIN-27NOV03-B58"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXHOUSEPOPVOTEMARGIN-27NOV03-B50",
+          "lo": -1.0,
+          "hi": 0.0,
+          "label": "Republicans win"
+        },
+        {
+          "ticker": "KXHOUSEPOPVOTEMARGIN-27NOV03-B1",
+          "lo": 0.0,
+          "hi": 2.0,
+          "label": "Democrats, 0 to 2%"
+        },
+        {
+          "ticker": "KXHOUSEPOPVOTEMARGIN-27NOV03-B3",
+          "lo": 2.0,
+          "hi": 4.0,
+          "label": "Democrats, 2 to 4%"
+        },
+        {
+          "ticker": "KXHOUSEPOPVOTEMARGIN-27NOV03-B5",
+          "lo": 4.0,
+          "hi": 6.0,
+          "label": "Democrats, 4 to 6%"
+        },
+        {
+          "ticker": "KXHOUSEPOPVOTEMARGIN-27NOV03-B7",
+          "lo": 6.0,
+          "hi": 8.0,
+          "label": "Democrats, 6 to 8%"
+        },
+        {
+          "ticker": "KXHOUSEPOPVOTEMARGIN-27NOV03-B9",
+          "lo": 8.0,
+          "hi": 10.0,
+          "label": "Democrats, 8 to 10%"
+        },
+        {
+          "ticker": "KXHOUSEPOPVOTEMARGIN-27NOV03-B11",
+          "lo": 10.0,
+          "hi": 12.0,
+          "label": "Democrats, 10 to 12%"
+        },
+        {
+          "ticker": "KXHOUSEPOPVOTEMARGIN-27NOV03-B13",
+          "lo": 12.0,
+          "hi": 14.0,
+          "label": "Democrats, 12 to 14%"
+        },
+        {
+          "ticker": "KXHOUSEPOPVOTEMARGIN-27NOV03-B15",
+          "lo": 14.0,
+          "hi": 16.0,
+          "label": "Democrats, 14 to 16%"
+        },
+        {
+          "ticker": "KXHOUSEPOPVOTEMARGIN-27NOV03-B58",
+          "lo": 16.0,
+          "hi": 100.0,
+          "label": "Democrats, 16% and above"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXFOMCDISSENTCOUNT-26SEP",
+      "series_ticker": "KXFOMCDISSENTCOUNT",
+      "title": "How many dissenting votes at the September Fed meeting?",
+      "shape": "partition",
+      "exhaustive": "open_tail",
+      "n_legs": 6,
+      "screenable": false,
+      "support": "integer",
+      "evidence": [
+        "support: integer (rules describe a whole-number quantity)",
+        "outcomes above 5 are not listed, and nothing in the settlement terms bounds the variable there"
+      ],
+      "venue_mutually_exclusive": true,
+      "venue_collateral_type": "MECNET",
+      "liquidity": 0.0,
+      "volume_24h": 4432.54,
+      "close_time": "2026-09-16T17:59:00Z",
+      "tickers": [
+        "KXFOMCDISSENTCOUNT-26SEP-0",
+        "KXFOMCDISSENTCOUNT-26SEP-1",
+        "KXFOMCDISSENTCOUNT-26SEP-2",
+        "KXFOMCDISSENTCOUNT-26SEP-3",
+        "KXFOMCDISSENTCOUNT-26SEP-4",
+        "KXFOMCDISSENTCOUNT-26SEP-5"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXFOMCDISSENTCOUNT-26SEP-0",
+          "lo": 0.0,
+          "hi": 0.0,
+          "label": "0"
+        },
+        {
+          "ticker": "KXFOMCDISSENTCOUNT-26SEP-1",
+          "lo": 1.0,
+          "hi": 1.0,
+          "label": "1"
+        },
+        {
+          "ticker": "KXFOMCDISSENTCOUNT-26SEP-2",
+          "lo": 2.0,
+          "hi": 2.0,
+          "label": "2"
+        },
+        {
+          "ticker": "KXFOMCDISSENTCOUNT-26SEP-3",
+          "lo": 3.0,
+          "hi": 3.0,
+          "label": "3"
+        },
+        {
+          "ticker": "KXFOMCDISSENTCOUNT-26SEP-4",
+          "lo": 4.0,
+          "hi": 4.0,
+          "label": "4"
+        },
+        {
+          "ticker": "KXFOMCDISSENTCOUNT-26SEP-5",
+          "lo": 5.0,
+          "hi": 5.0,
+          "label": "5"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXFED-26SEP",
+      "series_ticker": "KXFED",
+      "title": "Fed funds rate after Sep 2026 meeting?",
+      "shape": "ladder",
+      "exhaustive": "not_applicable",
+      "n_legs": 11,
+      "screenable": false,
+      "support": "continuous",
+      "evidence": [
+        "support: continuous (strikes are written to 2 decimal places, so the source resolves to 0.01)",
+        "every leg is a one-sided upward threshold, so the legs nest"
+      ],
+      "venue_mutually_exclusive": false,
+      "venue_collateral_type": "DIRECNET",
+      "liquidity": 0.0,
+      "volume_24h": 81784.4,
+      "close_time": "2026-09-16T17:55:00Z",
+      "tickers": [
+        "KXFED-26SEP-T2.75",
+        "KXFED-26SEP-T3.00",
+        "KXFED-26SEP-T3.25",
+        "KXFED-26SEP-T3.50",
+        "KXFED-26SEP-T3.75",
+        "KXFED-26SEP-T4.00",
+        "KXFED-26SEP-T4.25",
+        "KXFED-26SEP-T4.50",
+        "KXFED-26SEP-T4.75",
+        "KXFED-26SEP-T5.00",
+        "KXFED-26SEP-T5.25"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXFED-26SEP-T2.75",
+          "lo": 2.75,
+          "hi": null,
+          "label": "Above 2.75%"
+        },
+        {
+          "ticker": "KXFED-26SEP-T3.00",
+          "lo": 3.0,
+          "hi": null,
+          "label": "Above 3.00%"
+        },
+        {
+          "ticker": "KXFED-26SEP-T3.25",
+          "lo": 3.25,
+          "hi": null,
+          "label": "Above 3.25%"
+        },
+        {
+          "ticker": "KXFED-26SEP-T3.50",
+          "lo": 3.5,
+          "hi": null,
+          "label": "Above 3.50%"
+        },
+        {
+          "ticker": "KXFED-26SEP-T3.75",
+          "lo": 3.75,
+          "hi": null,
+          "label": "Above 3.75%"
+        },
+        {
+          "ticker": "KXFED-26SEP-T4.00",
+          "lo": 4.0,
+          "hi": null,
+          "label": "Above 4.00%"
+        },
+        {
+          "ticker": "KXFED-26SEP-T4.25",
+          "lo": 4.25,
+          "hi": null,
+          "label": "Above 4.25%"
+        },
+        {
+          "ticker": "KXFED-26SEP-T4.50",
+          "lo": 4.5,
+          "hi": null,
+          "label": "Above 4.50%"
+        },
+        {
+          "ticker": "KXFED-26SEP-T4.75",
+          "lo": 4.75,
+          "hi": null,
+          "label": "Above 4.75%"
+        },
+        {
+          "ticker": "KXFED-26SEP-T5.00",
+          "lo": 5.0,
+          "hi": null,
+          "label": "Above 5.00%"
+        },
+        {
+          "ticker": "KXFED-26SEP-T5.25",
+          "lo": 5.25,
+          "hi": null,
+          "label": "Above 5.25%"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXAAAGASW-26SEP14",
+      "series_ticker": "KXAAAGASW",
+      "title": "US gas prices this week",
+      "shape": "ladder",
+      "exhaustive": "not_applicable",
+      "n_legs": 21,
+      "screenable": false,
+      "support": "continuous",
+      "evidence": [
+        "support: continuous (strikes are written to 2 decimal places, so the source resolves to 0.01)",
+        "every leg is a one-sided upward threshold, so the legs nest"
+      ],
+      "venue_mutually_exclusive": false,
+      "venue_collateral_type": "DIRECNET",
+      "liquidity": 0.0,
+      "volume_24h": 117444.64,
+      "close_time": "2026-09-14T03:59:00Z",
+      "tickers": [
+        "KXAAAGASW-26SEP14-3.9800",
+        "KXAAAGASW-26SEP14-4.0000",
+        "KXAAAGASW-26SEP14-4.0200",
+        "KXAAAGASW-26SEP14-4.0400",
+        "KXAAAGASW-26SEP14-4.0600",
+        "KXAAAGASW-26SEP14-4.0800",
+        "KXAAAGASW-26SEP14-4.1000",
+        "KXAAAGASW-26SEP14-4.1200",
+        "KXAAAGASW-26SEP14-4.1400",
+        "KXAAAGASW-26SEP14-4.1600",
+        "KXAAAGASW-26SEP14-4.1800",
+        "KXAAAGASW-26SEP14-4.2000",
+        "KXAAAGASW-26SEP14-4.2200",
+        "KXAAAGASW-26SEP14-4.2400",
+        "KXAAAGASW-26SEP14-4.2600",
+        "KXAAAGASW-26SEP14-4.2800",
+        "KXAAAGASW-26SEP14-4.3000",
+        "KXAAAGASW-26SEP14-4.3200",
+        "KXAAAGASW-26SEP14-4.3400",
+        "KXAAAGASW-26SEP14-4.3600",
+        "KXAAAGASW-26SEP14-4.3800"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXAAAGASW-26SEP14-3.9800",
+          "lo": 3.98,
+          "hi": null,
+          "label": "Above 3.9800"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.0000",
+          "lo": 4.0,
+          "hi": null,
+          "label": "Above 4.0000"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.0200",
+          "lo": 4.02,
+          "hi": null,
+          "label": "Above 4.0200"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.0400",
+          "lo": 4.04,
+          "hi": null,
+          "label": "Above 4.0400"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.0600",
+          "lo": 4.06,
+          "hi": null,
+          "label": "Above 4.0600"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.0800",
+          "lo": 4.08,
+          "hi": null,
+          "label": "Above 4.0800"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.1000",
+          "lo": 4.1,
+          "hi": null,
+          "label": "Above 4.1000"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.1200",
+          "lo": 4.12,
+          "hi": null,
+          "label": "Above 4.1200"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.1400",
+          "lo": 4.14,
+          "hi": null,
+          "label": "Above 4.1400"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.1600",
+          "lo": 4.16,
+          "hi": null,
+          "label": "Above 4.1600"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.1800",
+          "lo": 4.18,
+          "hi": null,
+          "label": "Above 4.1800"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.2000",
+          "lo": 4.2,
+          "hi": null,
+          "label": "Above 4.2000"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.2200",
+          "lo": 4.22,
+          "hi": null,
+          "label": "Above 4.2200"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.2400",
+          "lo": 4.24,
+          "hi": null,
+          "label": "Above 4.2400"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.2600",
+          "lo": 4.26,
+          "hi": null,
+          "label": "Above 4.2600"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.2800",
+          "lo": 4.28,
+          "hi": null,
+          "label": "Above 4.2800"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.3000",
+          "lo": 4.3,
+          "hi": null,
+          "label": "Above 4.3000"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.3200",
+          "lo": 4.32,
+          "hi": null,
+          "label": "Above 4.3200"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.3400",
+          "lo": 4.34,
+          "hi": null,
+          "label": "Above 4.3400"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.3600",
+          "lo": 4.36,
+          "hi": null,
+          "label": "Above 4.3600"
+        },
+        {
+          "ticker": "KXAAAGASW-26SEP14-4.3800",
+          "lo": 4.38,
+          "hi": null,
+          "label": "Above 4.3800"
+        }
+      ]
+    },
+    {
+      "event_ticker": "KXBTCD-26SEP1017",
+      "series_ticker": "KXBTCD",
+      "title": "BTC price on Sep 10, 2026 at 5pm EDT?",
+      "shape": "ladder",
+      "exhaustive": "not_applicable",
+      "n_legs": 80,
+      "screenable": false,
+      "support": "continuous",
+      "evidence": [
+        "support: continuous (strikes are written to 2 decimal places, so the source resolves to 0.01)",
+        "every leg is a one-sided upward threshold, so the legs nest"
+      ],
+      "venue_mutually_exclusive": false,
+      "venue_collateral_type": "DIRECNET",
+      "liquidity": 0.0,
+      "volume_24h": 1146281.8,
+      "close_time": "2026-09-10T21:00:00Z",
+      "tickers": [
+        "KXBTCD-26SEP1017-T69499.99",
+        "KXBTCD-26SEP1017-T69749.99",
+        "KXBTCD-26SEP1017-T69999.99",
+        "KXBTCD-26SEP1017-T70249.99",
+        "KXBTCD-26SEP1017-T70499.99",
+        "KXBTCD-26SEP1017-T70749.99",
+        "KXBTCD-26SEP1017-T70999.99",
+        "KXBTCD-26SEP1017-T71249.99",
+        "KXBTCD-26SEP1017-T71499.99",
+        "KXBTCD-26SEP1017-T71749.99",
+        "KXBTCD-26SEP1017-T71999.99",
+        "KXBTCD-26SEP1017-T72249.99",
+        "KXBTCD-26SEP1017-T72499.99",
+        "KXBTCD-26SEP1017-T72749.99",
+        "KXBTCD-26SEP1017-T72999.99",
+        "KXBTCD-26SEP1017-T73249.99",
+        "KXBTCD-26SEP1017-T73499.99",
+        "KXBTCD-26SEP1017-T73749.99",
+        "KXBTCD-26SEP1017-T73999.99",
+        "KXBTCD-26SEP1017-T74249.99",
+        "KXBTCD-26SEP1017-T74499.99",
+        "KXBTCD-26SEP1017-T74749.99",
+        "KXBTCD-26SEP1017-T74999.99",
+        "KXBTCD-26SEP1017-T75249.99",
+        "KXBTCD-26SEP1017-T75499.99",
+        "KXBTCD-26SEP1017-T75749.99",
+        "KXBTCD-26SEP1017-T75999.99",
+        "KXBTCD-26SEP1017-T76249.99",
+        "KXBTCD-26SEP1017-T76499.99",
+        "KXBTCD-26SEP1017-T76749.99",
+        "KXBTCD-26SEP1017-T76999.99",
+        "KXBTCD-26SEP1017-T77249.99",
+        "KXBTCD-26SEP1017-T77499.99",
+        "KXBTCD-26SEP1017-T77749.99",
+        "KXBTCD-26SEP1017-T77999.99",
+        "KXBTCD-26SEP1017-T78249.99",
+        "KXBTCD-26SEP1017-T78499.99",
+        "KXBTCD-26SEP1017-T78749.99",
+        "KXBTCD-26SEP1017-T78999.99",
+        "KXBTCD-26SEP1017-T79249.99",
+        "KXBTCD-26SEP1017-T79499.99",
+        "KXBTCD-26SEP1017-T79749.99",
+        "KXBTCD-26SEP1017-T79999.99",
+        "KXBTCD-26SEP1017-T80249.99",
+        "KXBTCD-26SEP1017-T80499.99",
+        "KXBTCD-26SEP1017-T80749.99",
+        "KXBTCD-26SEP1017-T80999.99",
+        "KXBTCD-26SEP1017-T81249.99",
+        "KXBTCD-26SEP1017-T81499.99",
+        "KXBTCD-26SEP1017-T81749.99",
+        "KXBTCD-26SEP1017-T81999.99",
+        "KXBTCD-26SEP1017-T82249.99",
+        "KXBTCD-26SEP1017-T82499.99",
+        "KXBTCD-26SEP1017-T82749.99",
+        "KXBTCD-26SEP1017-T82999.99",
+        "KXBTCD-26SEP1017-T83249.99",
+        "KXBTCD-26SEP1017-T83499.99",
+        "KXBTCD-26SEP1017-T83749.99",
+        "KXBTCD-26SEP1017-T83999.99",
+        "KXBTCD-26SEP1017-T84249.99",
+        "KXBTCD-26SEP1017-T84499.99",
+        "KXBTCD-26SEP1017-T84749.99",
+        "KXBTCD-26SEP1017-T84999.99",
+        "KXBTCD-26SEP1017-T85249.99",
+        "KXBTCD-26SEP1017-T85499.99",
+        "KXBTCD-26SEP1017-T85749.99",
+        "KXBTCD-26SEP1017-T85999.99",
+        "KXBTCD-26SEP1017-T86249.99",
+        "KXBTCD-26SEP1017-T86499.99",
+        "KXBTCD-26SEP1017-T86749.99",
+        "KXBTCD-26SEP1017-T86999.99",
+        "KXBTCD-26SEP1017-T87249.99",
+        "KXBTCD-26SEP1017-T87499.99",
+        "KXBTCD-26SEP1017-T87749.99",
+        "KXBTCD-26SEP1017-T87999.99",
+        "KXBTCD-26SEP1017-T88249.99",
+        "KXBTCD-26SEP1017-T88499.99",
+        "KXBTCD-26SEP1017-T88749.99",
+        "KXBTCD-26SEP1017-T88999.99",
+        "KXBTCD-26SEP1017-T89249.99"
+      ],
+      "leg_bounds": [
+        {
+          "ticker": "KXBTCD-26SEP1017-T69499.99",
+          "lo": 69499.99,
+          "hi": null,
+          "label": "$69,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T69749.99",
+          "lo": 69749.99,
+          "hi": null,
+          "label": "$69,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T69999.99",
+          "lo": 69999.99,
+          "hi": null,
+          "label": "$70,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T70249.99",
+          "lo": 70249.99,
+          "hi": null,
+          "label": "$70,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T70499.99",
+          "lo": 70499.99,
+          "hi": null,
+          "label": "$70,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T70749.99",
+          "lo": 70749.99,
+          "hi": null,
+          "label": "$70,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T70999.99",
+          "lo": 70999.99,
+          "hi": null,
+          "label": "$71,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T71249.99",
+          "lo": 71249.99,
+          "hi": null,
+          "label": "$71,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T71499.99",
+          "lo": 71499.99,
+          "hi": null,
+          "label": "$71,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T71749.99",
+          "lo": 71749.99,
+          "hi": null,
+          "label": "$71,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T71999.99",
+          "lo": 71999.99,
+          "hi": null,
+          "label": "$72,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T72249.99",
+          "lo": 72249.99,
+          "hi": null,
+          "label": "$72,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T72499.99",
+          "lo": 72499.99,
+          "hi": null,
+          "label": "$72,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T72749.99",
+          "lo": 72749.99,
+          "hi": null,
+          "label": "$72,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T72999.99",
+          "lo": 72999.99,
+          "hi": null,
+          "label": "$73,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T73249.99",
+          "lo": 73249.99,
+          "hi": null,
+          "label": "$73,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T73499.99",
+          "lo": 73499.99,
+          "hi": null,
+          "label": "$73,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T73749.99",
+          "lo": 73749.99,
+          "hi": null,
+          "label": "$73,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T73999.99",
+          "lo": 73999.99,
+          "hi": null,
+          "label": "$74,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T74249.99",
+          "lo": 74249.99,
+          "hi": null,
+          "label": "$74,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T74499.99",
+          "lo": 74499.99,
+          "hi": null,
+          "label": "$74,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T74749.99",
+          "lo": 74749.99,
+          "hi": null,
+          "label": "$74,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T74999.99",
+          "lo": 74999.99,
+          "hi": null,
+          "label": "$75,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T75249.99",
+          "lo": 75249.99,
+          "hi": null,
+          "label": "$75,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T75499.99",
+          "lo": 75499.99,
+          "hi": null,
+          "label": "$75,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T75749.99",
+          "lo": 75749.99,
+          "hi": null,
+          "label": "$75,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T75999.99",
+          "lo": 75999.99,
+          "hi": null,
+          "label": "$76,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T76249.99",
+          "lo": 76249.99,
+          "hi": null,
+          "label": "$76,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T76499.99",
+          "lo": 76499.99,
+          "hi": null,
+          "label": "$76,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T76749.99",
+          "lo": 76749.99,
+          "hi": null,
+          "label": "$76,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T76999.99",
+          "lo": 76999.99,
+          "hi": null,
+          "label": "$77,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T77249.99",
+          "lo": 77249.99,
+          "hi": null,
+          "label": "$77,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T77499.99",
+          "lo": 77499.99,
+          "hi": null,
+          "label": "$77,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T77749.99",
+          "lo": 77749.99,
+          "hi": null,
+          "label": "$77,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T77999.99",
+          "lo": 77999.99,
+          "hi": null,
+          "label": "$78,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T78249.99",
+          "lo": 78249.99,
+          "hi": null,
+          "label": "$78,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T78499.99",
+          "lo": 78499.99,
+          "hi": null,
+          "label": "$78,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T78749.99",
+          "lo": 78749.99,
+          "hi": null,
+          "label": "$78,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T78999.99",
+          "lo": 78999.99,
+          "hi": null,
+          "label": "$79,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T79249.99",
+          "lo": 79249.99,
+          "hi": null,
+          "label": "$79,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T79499.99",
+          "lo": 79499.99,
+          "hi": null,
+          "label": "$79,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T79749.99",
+          "lo": 79749.99,
+          "hi": null,
+          "label": "$79,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T79999.99",
+          "lo": 79999.99,
+          "hi": null,
+          "label": "$80,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T80249.99",
+          "lo": 80249.99,
+          "hi": null,
+          "label": "$80,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T80499.99",
+          "lo": 80499.99,
+          "hi": null,
+          "label": "$80,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T80749.99",
+          "lo": 80749.99,
+          "hi": null,
+          "label": "$80,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T80999.99",
+          "lo": 80999.99,
+          "hi": null,
+          "label": "$81,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T81249.99",
+          "lo": 81249.99,
+          "hi": null,
+          "label": "$81,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T81499.99",
+          "lo": 81499.99,
+          "hi": null,
+          "label": "$81,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T81749.99",
+          "lo": 81749.99,
+          "hi": null,
+          "label": "$81,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T81999.99",
+          "lo": 81999.99,
+          "hi": null,
+          "label": "$82,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T82249.99",
+          "lo": 82249.99,
+          "hi": null,
+          "label": "$82,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T82499.99",
+          "lo": 82499.99,
+          "hi": null,
+          "label": "$82,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T82749.99",
+          "lo": 82749.99,
+          "hi": null,
+          "label": "$82,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T82999.99",
+          "lo": 82999.99,
+          "hi": null,
+          "label": "$83,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T83249.99",
+          "lo": 83249.99,
+          "hi": null,
+          "label": "$83,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T83499.99",
+          "lo": 83499.99,
+          "hi": null,
+          "label": "$83,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T83749.99",
+          "lo": 83749.99,
+          "hi": null,
+          "label": "$83,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T83999.99",
+          "lo": 83999.99,
+          "hi": null,
+          "label": "$84,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T84249.99",
+          "lo": 84249.99,
+          "hi": null,
+          "label": "$84,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T84499.99",
+          "lo": 84499.99,
+          "hi": null,
+          "label": "$84,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T84749.99",
+          "lo": 84749.99,
+          "hi": null,
+          "label": "$84,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T84999.99",
+          "lo": 84999.99,
+          "hi": null,
+          "label": "$85,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T85249.99",
+          "lo": 85249.99,
+          "hi": null,
+          "label": "$85,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T85499.99",
+          "lo": 85499.99,
+          "hi": null,
+          "label": "$85,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T85749.99",
+          "lo": 85749.99,
+          "hi": null,
+          "label": "$85,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T85999.99",
+          "lo": 85999.99,
+          "hi": null,
+          "label": "$86,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T86249.99",
+          "lo": 86249.99,
+          "hi": null,
+          "label": "$86,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T86499.99",
+          "lo": 86499.99,
+          "hi": null,
+          "label": "$86,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T86749.99",
+          "lo": 86749.99,
+          "hi": null,
+          "label": "$86,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T86999.99",
+          "lo": 86999.99,
+          "hi": null,
+          "label": "$87,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T87249.99",
+          "lo": 87249.99,
+          "hi": null,
+          "label": "$87,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T87499.99",
+          "lo": 87499.99,
+          "hi": null,
+          "label": "$87,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T87749.99",
+          "lo": 87749.99,
+          "hi": null,
+          "label": "$87,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T87999.99",
+          "lo": 87999.99,
+          "hi": null,
+          "label": "$88,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T88249.99",
+          "lo": 88249.99,
+          "hi": null,
+          "label": "$88,250 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T88499.99",
+          "lo": 88499.99,
+          "hi": null,
+          "label": "$88,500 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T88749.99",
+          "lo": 88749.99,
+          "hi": null,
+          "label": "$88,750 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T88999.99",
+          "lo": 88999.99,
+          "hi": null,
+          "label": "$89,000 or above"
+        },
+        {
+          "ticker": "KXBTCD-26SEP1017-T89249.99",
+          "lo": 89249.99,
+          "hi": null,
+          "label": "$89,250 or above"
+        }
+      ]
+    }
+  ]
+}

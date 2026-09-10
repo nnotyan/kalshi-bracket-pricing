@@ -331,17 +331,32 @@ def figure_stale_case(panel: pd.DataFrame, triaged: pd.DataFrame, out: Path,
     stale = triaged[triaged["reason"] == "stale_quote"]
     if not len(stale):
         return None
-    worst = stale.loc[stale["gross"].idxmax()]
-    event_ticker, moment = worst["event_ticker"], pd.Timestamp(worst["ts"])
 
-    legs = panel[panel["event_ticker"] == event_ticker].copy()
+    # Two different things get called stale. A far-tail leg sitting at a bid of
+    # zero all day has never quoted, and while it is genuinely unchanged it is
+    # not the interesting case. A leg that was quoting and then stopped is, so
+    # prefer one of those and fall back only if the sample has none.
     span = pd.Timedelta(minutes=window)
-    legs = legs[(legs["ts"] >= moment - span) & (legs["ts"] <= moment + span)]
-    if not len(legs):
-        return None
+    chosen = None
+    for _, candidate in stale.sort_values("gross", ascending=False).head(30).iterrows():
+        window_legs = panel[(panel["event_ticker"] == candidate["event_ticker"])]
+        moment = pd.Timestamp(candidate["ts"])
+        window_legs = window_legs[(window_legs["ts"] >= moment - span)
+                                  & (window_legs["ts"] <= moment + span)]
+        at_flag = window_legs[window_legs["ts"] == moment]
+        if not len(at_flag):
+            continue
+        culprit_row = at_flag.loc[at_flag["stale_minutes"].idxmax()]
+        live = float(culprit_row["yes_bid"] or 0.0) > 0.0
+        if chosen is None or (live and not chosen[3]):
+            chosen = (candidate, window_legs, str(culprit_row["ticker"]), live)
+        if live:
+            break
 
-    at_flag = legs[legs["ts"] == moment]
-    culprit = at_flag.loc[at_flag["stale_minutes"].idxmax(), "ticker"]
+    if chosen is None:
+        return None
+    worst, legs, culprit, culprit_is_live = chosen
+    event_ticker, moment = worst["event_ticker"], pd.Timestamp(worst["ts"])
 
     # The long Dutch book buys every leg at its ask; the short one sells every
     # leg at its bid. Which quote matters, and which side of par counts as the
@@ -363,10 +378,13 @@ def figure_stale_case(panel: pd.DataFrame, triaged: pd.DataFrame, out: Path,
                      linewidth=1.8 if is_culprit else 0.9,
                      alpha=1.0 if is_culprit else 0.55,
                      zorder=3 if is_culprit else 2,
-                     label=f"{ticker.split('-')[-1]} (frozen)" if is_culprit else None)
+                     label=(f"{ticker.split('-')[-1]} "
+                            + ("(stopped moving)" if culprit_is_live else "(never bid for)")
+                            if is_culprit else None))
     axes[0].legend(frameon=False, fontsize=9, loc="upper left")
-    _style(axes[0], f"{event_ticker}: one leg stopped quoting while the rest moved",
-           "", f"{leg_label}, cents")
+    headline = ("one leg stopped quoting while the rest moved" if culprit_is_live
+                else "one leg that nobody ever bid for")
+    _style(axes[0], f"{event_ticker}: {headline}", "", f"{leg_label}, cents")
 
     totals = legs.groupby("ts")[leg_column].sum().reset_index(name="total")
     axes[1].axhline(100, color=MUTED, linewidth=1.0, linestyle="--")

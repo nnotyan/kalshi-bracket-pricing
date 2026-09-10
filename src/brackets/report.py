@@ -17,7 +17,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from matplotlib.patches import FancyArrowPatch, Rectangle
+from matplotlib.patches import FancyArrowPatch, Patch, Rectangle
 
 from .fees import continuous_fee_cents_per_bracket, cost_curve, crossover_size, gini_simpson
 
@@ -182,47 +182,97 @@ def figure_structure_taxonomy(out: Path) -> Path:
 # -- data figures ----------------------------------------------------------
 
 def figure_band_vs_legs(profile: pd.DataFrame, out: Path) -> Path:
-    """Band half-width against leg count, with the constant-quality reference."""
-    fig, ax = plt.subplots(figsize=FIGSIZE)
-    ax.scatter(profile["n_legs"], profile["median_band"], s=46, color=YES,
-               edgecolor="white", zorder=3, label="observed band half-width")
+    """Band half-width against leg count, holding quoting quality fixed.
 
-    per_leg = float(profile["median_half_spread_per_leg"].median())
-    grid = np.linspace(profile["n_legs"].min(), profile["n_legs"].max(), 50)
-    ax.plot(grid, per_leg * grid, color=MUTED, linestyle="--", linewidth=1.3,
-            label=f"n x median half-spread ({per_leg:.2f}c per leg)")
+    Two things drive the band and they have to be separated. Leg count is the
+    mechanical one: the same per-leg half-spread bought n times is n times the
+    band. Quoting quality is the other, and it varies by an order of magnitude
+    across the venue. The guide lines fix quality so that the leg-count effect
+    is visible on its own, and the colour of each point says where that event
+    actually sits.
+    """
+    fig, ax = plt.subplots(figsize=(9.4, 5.2))
 
-    for row in profile.itertuples():
+    grid = np.linspace(profile["n_legs"].min() - 1, profile["n_legs"].max() + 7, 60)
+    for per_leg, label_at in ((0.5, 0.90), (1.0, 0.90), (2.0, 0.90), (4.0, 0.90)):
+        ax.plot(grid, per_leg * grid, color=MUTED, linestyle="--", linewidth=0.9,
+                alpha=0.6, zorder=1)
+        x = grid[int(len(grid) * label_at)]
+        ax.text(x, per_leg * x, f" {per_leg:g}c per leg", fontsize=8, color=MUTED,
+                rotation=0, va="bottom", ha="left")
+
+    points = ax.scatter(profile["n_legs"], profile["median_band"], s=58,
+                        c=profile["median_half_spread_per_leg"], cmap="viridis_r",
+                        norm=matplotlib.colors.LogNorm(), edgecolor="white",
+                        linewidth=0.8, zorder=3)
+    bar = fig.colorbar(points, ax=ax, pad=0.015)
+    bar.set_label("median half-spread per leg, cents", fontsize=9, color=INK)
+    bar.ax.tick_params(colors=MUTED, labelsize=8)
+
+    # Label the large brackets and the extremes; the six-leg weather events sit on
+    # top of each other and are called out as a group instead.
+    notable = profile[profile["n_legs"] >= 10].sort_values("n_legs")
+    for i, row in enumerate(notable.itertuples()):
         ax.annotate(row.event_ticker.split("-")[0], (row.n_legs, row.median_band),
-                    textcoords="offset points", xytext=(6, 4), fontsize=7.5, color=MUTED)
+                    textcoords="offset points", xytext=(7, 5 if i % 2 else -9),
+                    fontsize=7.5, color=INK)
+    six = profile[profile["n_legs"] == 6]
+    if len(six):
+        ax.annotate(f"{len(six)} six-leg brackets",
+                    (6, float(six["median_band"].median())),
+                    textcoords="offset points", xytext=(12, 16), fontsize=8, color=INK,
+                    arrowprops=dict(arrowstyle="-", color=MUTED, linewidth=0.8))
 
+    ax.set_yscale("log")
     _style(ax, "The no-arbitrage band is paid for one leg at a time",
-           "legs in the partition", "band half-width, cents")
-    ax.legend(frameon=False, fontsize=9, loc="upper left")
+           "legs in the partition", "band half-width, cents (log scale)")
+    ax.set_xlim(grid[0], grid[-1])
     return _save(fig, out, "band_vs_legs.png")
 
 
 def figure_mid_sum_band(screened: pd.DataFrame, out: Path,
                         event_ticker: str | None = None) -> Path:
     """One event's mid sum against its own band, minute by minute."""
-    if event_ticker is None:
-        counts = screened.groupby("event_ticker")["ts"].nunique()
-        event_ticker = counts.idxmax()
-    frame = screened[screened["event_ticker"] == event_ticker].sort_values("ts")
+    def pick(subset: pd.DataFrame) -> str | None:
+        if not len(subset):
+            return None
+        ranked = (subset.groupby("event_ticker")
+                  .agg(minutes=("ts", "nunique"), band=("band", "median")))
+        ranked = ranked[ranked["minutes"] >= ranked["minutes"].max() * 0.9]
+        return str(ranked["band"].idxmin())
 
-    fig, ax = plt.subplots(figsize=FIGSIZE)
-    ax.fill_between(frame["ts"], 100 - frame["band"], 100 + frame["band"],
-                    color=YES, alpha=0.14, label="no-arbitrage band")
-    ax.axhline(100, color=MUTED, linewidth=1.0, linestyle="--")
-    ax.plot(frame["ts"], frame["mid_sum"], color=INK, linewidth=1.4,
-            label="sum of leg mids")
-    ax.plot(frame["ts"], frame["ask_sum"], color=NO, linewidth=1.0, alpha=0.75,
-            label="sum of leg asks")
+    proven = event_ticker or pick(screened[screened["exhaustive"] == "proven"])
+    incomplete = pick(screened[screened["exhaustive"] == "open_tail"])
+    chosen = [(proven, "legs proven to cover every outcome"),
+              (incomplete, "legs that leave outcomes unlisted")]
+    chosen = [(t, s) for t, s in chosen if t]
 
-    _style(ax, f"{event_ticker}: what the bracket costs against what it pays",
-           "", "cents")
-    ax.legend(frameon=False, fontsize=9, loc="upper left", ncols=3)
-    fig.autofmt_xdate()
+    fig, axes = plt.subplots(1, len(chosen), figsize=(10.4, 4.6), squeeze=False)
+    for ax, (ticker, subtitle) in zip(axes[0], chosen):
+        frame = screened[screened["event_ticker"] == ticker].sort_values("ts")
+        ax.fill_between(frame["ts"], 100 - frame["band"], 100 + frame["band"],
+                        color=YES, alpha=0.14, label="no-arbitrage band")
+        ax.axhline(100, color=MUTED, linewidth=1.0, linestyle="--")
+        ax.plot(frame["ts"], frame["ask_sum"], color=NO, linewidth=1.2,
+                label="sum of asks (cost to buy)")
+        ax.plot(frame["ts"], frame["mid_sum"], color=INK, linewidth=1.4,
+                label="sum of mids")
+        ax.plot(frame["ts"], frame["bid_sum"], color=YES, linewidth=1.2,
+                label="sum of bids (return on selling)")
+
+        band = float(frame["band"].median())
+        legs = int(frame["n_legs"].iloc[0])
+        _style(ax, f"{ticker}\n{subtitle}", "", "cents" if ax is axes[0][0] else "")
+        ax.set_title(f"{ticker}\n{subtitle}", loc="left", fontsize=10.5, color=INK, pad=10)
+        ax.text(0.02, 0.02, f"{legs} legs, band half-width {band:.2f}c",
+                transform=ax.transAxes, fontsize=8.5, color=MUTED)
+        ax.margins(y=0.22)
+        ax.tick_params(axis="x", labelrotation=35, labelsize=8)
+
+    axes[0][0].legend(frameon=False, fontsize=8.5, loc="upper left", ncols=2)
+    fig.suptitle("The mid sum stays inside the band -- unless the bracket is incomplete",
+                 x=0.09, ha="left", fontsize=12, color=INK)
+    fig.tight_layout(rect=(0, 0, 1, 0.94))
     return _save(fig, out, "mid_sum_band.png")
 
 
@@ -242,10 +292,9 @@ def figure_flag_funnel(triaged: pd.DataFrame, out: Path) -> Path:
     total_tight = max(tight.sum(), 1)
 
     ax.barh(y + 0.19, overall / total_all, height=0.36,
-            color=[REASON_COLOURS[r] for r in order], alpha=0.85, label="all events")
+            color=[REASON_COLOURS[r] for r in order], alpha=0.85)
     ax.barh(y - 0.19, tight / total_tight, height=0.36,
-            color=[REASON_COLOURS[r] for r in order], alpha=0.42,
-            label="competitively quoted events only")
+            color=[REASON_COLOURS[r] for r in order], alpha=0.42)
 
     for i, reason in enumerate(order):
         ax.text(overall[reason] / total_all + 0.008, i + 0.19,
@@ -259,7 +308,13 @@ def figure_flag_funnel(triaged: pd.DataFrame, out: Path) -> Path:
     _style(ax, f"What {len(triaged):,} raw flags actually were",
            "share of raw flags", "")
     ax.xaxis.set_major_formatter(lambda v, _: f"{v:.0%}")
-    ax.legend(frameon=False, fontsize=9, loc="lower right")
+    # Each pair of bars is a share of its own denominator, so the legend has to
+    # carry the two counts or the comparison reads as a level rather than a mix.
+    handles = [Patch(facecolor=MUTED, alpha=0.85,
+                     label=f"all events (n = {int(overall.sum()):,})"),
+               Patch(facecolor=MUTED, alpha=0.42,
+                     label=f"competitively quoted only (n = {int(tight.sum()):,})")]
+    ax.legend(handles=handles, frameon=False, fontsize=9, loc="lower right")
     return _save(fig, out, "flag_funnel.png")
 
 

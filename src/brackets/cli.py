@@ -6,6 +6,7 @@ Five verbs, in the order they are normally run::
     brackets discover   build the working universe from config/universe.yaml
     brackets collect    poll the universe once a minute into parquet
     brackets screen     run both screens over the panel and write the tables
+    brackets explain    one event-minute end to end, with the arithmetic shown
     brackets report     draw the figures from the screen output
 """
 
@@ -25,6 +26,7 @@ from .api import KalshiClient
 from .book import reconcile
 from .collect import collect, discover, load_panel, read_universe, write_universe
 from .diagnostics import (band_profile, funnel, stale_leg_detail, survivors, triage)
+from .fees import assembly_cost, bracket_fee_cents, gini_simpson
 from .panel import align, event_quality, mark_competitive, prepare
 from .screen import ScreenConfig, naive_flags, screen_ladders, screen_partitions
 
@@ -211,6 +213,82 @@ def _print_summary(panel: pd.DataFrame, screened: pd.DataFrame, triaged: pd.Data
     print(f"\ncompetitively quoted events: {len(tight)} of {len(quality)}")
 
 
+def cmd_explain(args: argparse.Namespace) -> int:
+    """Print one event-minute end to end, from leg quotes to net edge.
+
+    Everything the screen does to a bracket, on a single cross-section, with the
+    arithmetic shown rather than summarised. Useful for checking the pipeline
+    against the venue by hand, and the fastest way to see why a bracket that
+    looks cheap is not.
+    """
+    config = _load_yaml(Path(args.config))
+    screen_config = _screen_config(config)
+
+    entries = {e.event_ticker: e for e in read_universe(Path(args.universe))}
+    if args.event not in entries:
+        print(f"{args.event} is not in {args.universe}")
+        return 1
+    entry = entries[args.event]
+    structure = entry.to_structure()
+
+    panel = prepare(load_panel(Path(args.panel)))
+    aligned, _ = align(panel, {args.event: entry.tickers})
+    aligned = aligned[aligned["event_ticker"] == args.event]
+    if not len(aligned):
+        print(f"no complete cross-section for {args.event} in the panel")
+        return 1
+
+    stamp = (pd.Timestamp(args.at, tz="UTC") if args.at
+             else sorted(aligned["ts"].unique())[-1])
+    cross = aligned[aligned["ts"] == stamp].sort_values("yes_bid", ascending=False)
+
+    print(f"\n{entry.event_ticker}   {structure.shape.value} / {structure.exhaustive.value}"
+          f"   {len(cross)} legs")
+    print(f"{entry.title}")
+    for line in entry.evidence:
+        print(f"  - {line}")
+    print(f"\ncross-section at {stamp:%Y-%m-%d %H:%M} UTC\n")
+
+    header = (f"{'leg':<14}{'outcome':<20}{'yes_bid':>8}{'no_bid':>8}{'ask':>7}"
+              f"{'mid':>7}{'half':>7}{'offer':>8}{'stale':>7}")
+    print(header)
+    print("-" * len(header))
+    labels = {leg.ticker: leg.label for leg in structure.legs}
+    for row in cross.itertuples():
+        print(f"{row.ticker.split('-')[-1]:<14}{labels.get(row.ticker, '')[:19]:<20}"
+              f"{row.yes_bid:>8.0f}{row.no_bid:>8.0f}{row.yes_ask_derived:>7.0f}"
+              f"{row.mid:>7.1f}{row.half_spread:>7.1f}"
+              f"{(row.yes_ask_size or 0):>8.0f}{row.stale_minutes:>7.0f}")
+
+    asks = cross["yes_ask_derived"].to_numpy(dtype="float64")
+    bids = cross["yes_bid"].to_numpy(dtype="float64")
+    band = float(cross["half_spread"].sum())
+    mid_sum = float(cross["mid"].sum())
+    ask_sum, bid_sum = float(asks.sum()), float(bids.sum())
+
+    print("-" * len(header))
+    print(f"{'sum of asks':<34}{ask_sum:>9.1f}   cost of buying the whole bracket")
+    print(f"{'sum of mids':<34}{mid_sum:>9.1f}   par is 100.0")
+    print(f"{'sum of bids':<34}{bid_sum:>9.1f}   return on selling the whole bracket")
+    print(f"{'band half-width':<34}{band:>9.2f}   the accumulated half-spreads")
+    print(f"{'no-arbitrage band':<34}{100 - band:>9.2f} to {100 + band:.2f}")
+    print(f"\n{'gross long edge':<34}{100 - ask_sum:>9.2f}")
+    print(f"{'gross short edge':<34}{bid_sum - 100:>9.2f}")
+    print(f"{'Gini-Simpson index':<34}{gini_simpson(asks):>9.3f}   drives the fee")
+
+    print(f"\n{'clip':>8}{'fee/bracket':>14}{'long net':>12}{'short net':>12}"
+          f"{'floor legs':>12}")
+    for size in screen_config.order_sizes:
+        cost = assembly_cost(asks, size, rate=screen_config.fee_rate)
+        short_fee = bracket_fee_cents(size, 100.0 - bids,
+                                      rate=screen_config.fee_rate) / size
+        print(f"{size:>8,}{cost.per_bracket_cents:>14.2f}"
+              f"{100 - ask_sum - cost.per_bracket_cents:>12.2f}"
+              f"{bid_sum - 100 - short_fee:>12.2f}{cost.floor_legs:>12}")
+    print()
+    return 0
+
+
 def cmd_report(args: argparse.Namespace) -> int:
     from .report import build_report
     build_report(Path(args.results), Path(args.out), _load_yaml(Path(args.config)))
@@ -251,6 +329,14 @@ def main(argv: list[str] | None = None) -> int:
     scr.add_argument("--out", default="results")
     scr.set_defaults(func=cmd_screen)
 
+    exp = subparsers.add_parser("explain", help="one event-minute, end to end")
+    exp.add_argument("event")
+    exp.add_argument("--at", default=None, help="UTC timestamp; defaults to the last minute")
+    exp.add_argument("--panel", default="data/quotes")
+    exp.add_argument("--universe", default="data/universe.json")
+    exp.add_argument("--config", default="config/screen.yaml")
+    exp.set_defaults(func=cmd_explain)
+
     rep = subparsers.add_parser("report", help="draw the figures")
     rep.add_argument("--results", default="results")
     rep.add_argument("--config", default="config/screen.yaml")
@@ -258,6 +344,11 @@ def main(argv: list[str] | None = None) -> int:
     rep.set_defaults(func=cmd_report)
 
     args = parser.parse_args(argv)
+    # Outcome labels carry degree signs and currency symbols, and the Windows
+    # console defaults to a codepage that cannot print them.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING,
                         format="%(asctime)s %(levelname)s %(message)s")
     return args.func(args)

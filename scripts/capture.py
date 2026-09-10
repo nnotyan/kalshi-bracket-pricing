@@ -24,13 +24,15 @@ SHOTS = [
      "$ brackets board"),
     ("screen", ["screen", "--panel", "data/quotes", "--out", "results"],
      "shot_screen.png", "$ brackets screen"),
+    ("explain", ["explain", "KXHIGHNY-26SEP10"], "shot_explain.png",
+     "$ brackets explain KXHIGHNY-26SEP10"),
 ]
 
 
 def run(args: list[str]) -> str:
     result = subprocess.run(
         [sys.executable, "-m", "brackets.cli", *args],
-        cwd=ROOT, capture_output=True, text=True,
+        cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace",
         env={**dict(__import__("os").environ), "PYTHONPATH": str(ROOT / "src")},
     )
     return (result.stdout or "") + (result.stderr or "")

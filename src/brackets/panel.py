@@ -1,12 +1,12 @@
 """Turning raw snapshots into an aligned, annotated quote panel.
 
-Three things happen here, and the second one is the one that matters most.
+Three things happen here: inversion, alignment and staleness measurement.
 
-**Inversion.** Every row gets its derived asks, mid, and half-spread from
+Every row first gets its derived asks, mid, and half-spread from
 :mod:`brackets.book`.
 
-**Alignment.** A bracket is only tradeable as a bracket if every leg is quoted
-at the same instant. A poll that returns eleven of twelve legs, because one
+Alignment matters most. A bracket is only tradeable as a bracket if every leg is
+quoted at the same instant. A poll that returns eleven of twelve legs, because one
 series call timed out or because a market flipped to ``closed`` halfway through
 the sweep, produces a cross-section that never existed. Summing it against par
 manufactures an arbitrage out of nothing more than a dropped request. So the
@@ -14,12 +14,12 @@ panel is cut down to event-minutes whose leg set exactly matches the leg set the
 structural classifier signed off on, and the discarded minutes are counted
 rather than silently dropped.
 
-**Staleness.** The panel records, for every leg at every minute, how long its
-two bid sides have been unchanged, and how deep the offer behind the derived ask
-is. Neither is a price, and neither shows up in an overround calculation, but
-between them they explain most of what a naive screen reports as free money: a
-leg whose bid has not moved in forty minutes is not quoting a price, it is
-displaying an old one.
+Finally, the panel records, for every leg at every minute, how long its two bid
+sides have been unchanged, and how deep the offer behind the derived ask is.
+Neither is a price, and neither shows up in an overround calculation, but
+between them they explain a large share of what a naive screen reports as free
+money. A leg whose bid has not moved in forty minutes is displaying an old price
+rather than quoting a current one.
 """
 
 from __future__ import annotations
@@ -133,9 +133,9 @@ def mark_competitive(quality: pd.DataFrame, max_median_width: float = 2.0,
                      min_offered_share: float = 0.99) -> pd.DataFrame:
     """Label events that are genuinely two-sided and tight most of the time.
 
-    The three conditions are independent failure modes. A wide book is not
-    mispriced, it is just wide. A book with no depth behind the offer has a price
-    you cannot trade in size. A book that is one-sided part of the time has legs
+    The three conditions are independent failure modes. A wide book can be
+    fairly priced and still too wide to trade. A book with no depth behind the
+    offer has a price you cannot trade in size. A book that is one-sided part of the time has legs
     that periodically cannot be bought at all.
     """
     out = quality.copy()

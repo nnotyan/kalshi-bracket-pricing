@@ -10,9 +10,9 @@ tradeable anyway is the settlement identity
 which holds by construction, since exactly one of the two pays out. A resting
 bid for NO at ``q`` cents is therefore economically identical to an offer to
 sell YES at ``100 - q``: the counterparty hands over ``100 - q`` cents, Kalshi
-mints the pair, and the NO bidder gets their side at the price they asked for.
+mints the pair, and the NO bidder gets their side at the price they bid.
 
-So the tradeable YES ask is not quoted, it is *derived*:
+So the tradeable YES ask is derived rather than quoted:
 
     yes_ask = 100 - no_bid
     no_ask  = 100 - yes_bid
@@ -79,8 +79,8 @@ class Quote:
     def crossed(self) -> bool:
         """A crossed book: the two bids together promise more than par.
 
-        This should never happen on a live venue -- it is a free dollar for
-        whoever sells the pair -- so in practice it means one of the two legs is
+        This should never happen on a live venue (it is a free dollar for
+        whoever sells the pair), so in practice it means one of the two legs is
         a stale snapshot rather than a real quote.
         """
         return self.width < 0.0
@@ -144,8 +144,8 @@ def executable_ask(frame: pd.DataFrame, min_size: float = 0.0) -> pd.Series:
 
     ``min_size`` screens out offers too thin to fill the intended clip. A quote
     that exists but has one contract behind it is not a price you can assemble a
-    bracket at, and treating it as one is the single most common way to
-    manufacture a phantom arbitrage.
+    bracket at, and treating it as one is an easy way to manufacture a phantom
+    arbitrage.
     """
     ask = frame["yes_ask_derived"].astype("float64")
     offered = frame["yes_offered"].fillna(False).astype(bool)

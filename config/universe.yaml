@@ -35,8 +35,8 @@ series:
   - {ticker: KXHOUSEPOPVOTEMARGIN, role: partition_open, max_events: 1}
   - {ticker: KXFOMCDISSENTCOUNT,   role: partition_open, max_events: 1}
 
-  # Nested thresholds. Summing these against par is the error the screen exists
-  # to refuse to make.
+  # Nested thresholds. Summing these against par is exactly the error the screen
+  # is built to avoid.
   - {ticker: KXFED,     role: ladder, max_events: 1}
   - {ticker: KXAAAGASW, role: ladder, max_events: 1}
   - {ticker: KXBTCD,    role: ladder, max_events: 1}

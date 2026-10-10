@@ -5,7 +5,7 @@ several markets in it as a probability distribution whose legs ought to sum to a
 dollar. That is wrong often enough to matter, and it is wrong in two different
 ways.
 
-The first is the difference between a **partition** and a **threshold ladder**.
+The first is the difference between a partition and a threshold ladder.
 A partition splits the settlement variable into disjoint buckets that between
 them cover every outcome: the highest temperature in New York is either 84 or
 below, or 85-86, or 87-88, and so on. Exactly one leg pays, so the implied
@@ -18,13 +18,13 @@ that looks like a colossal overround and means nothing at all. Both shapes live
 under one ``event_ticker`` and the API gives no field that separates them, so
 the separation has to be made from the strikes.
 
-The second is **exhaustiveness**, and this is the one that decides whether the
+The second is exhaustiveness, and this is the one that decides whether the
 strategy is arbitrage or a bet. Sharing an event ticker proves nothing: an event
 can hold five candidates out of a field of nine, and buying all five below par
-is simply a wager that the winner is in the group. What proves exhaustiveness is
-the settlement terms -- the floor and cap strikes and the rules text that
-defines them -- covering the whole support of the settlement variable with no
-gap and with both tails open. That test is not free, because coverage depends on
+is a wager that the winner is in the group. What proves exhaustiveness is the
+settlement terms (the floor and cap strikes and the rules text that defines
+them) covering the whole support of the settlement variable with no gap and with
+both tails open. That test is not free, because coverage depends on
 what values the settlement variable can take. New York temperature buckets run
 84-or-below, 85-86, 87-88: as intervals on the real line they leave 86.5
 uncovered, and they only tile because the settlement source reports whole
@@ -49,8 +49,8 @@ from typing import Sequence
 INF = math.inf
 
 # Phrases that mark a leg as the catch-all of a categorical event. Without one of
-# these -- or an explicit statement in the rules that the listed outcomes are the
-# only ones -- a categorical event cannot be shown to be exhaustive.
+# these, or an explicit statement in the rules that the listed outcomes are the
+# only ones, a categorical event cannot be shown to be exhaustive.
 RESIDUAL_PATTERNS = (
     r"\bany other\b", r"\bsomeone else\b", r"\banother\b", r"\bnone of the above\b",
     r"\bfield\b", r"\bother\b", r"\bno winner\b", r"\bnot listed\b",
@@ -67,8 +67,8 @@ _CONTINUOUS_HINTS = re.compile(
     r"\bindex\b|\bprice\b|\brate\b|\bpercent|\bUSD\b|\$", re.IGNORECASE)
 
 # Counts cannot go below zero, so a bracket whose lowest leg is "0" covers the
-# bottom of the support without an open tail. Anything else has to earn its
-# tails the hard way.
+# bottom of the support without an open tail. Anything else needs an open leg
+# at each end unless a bound is stated somewhere.
 _COUNT_HINTS = re.compile(r"\bhow many\b|\bnumber of\b|\bcount\b|\bseats\b|\bcuts\b",
                           re.IGNORECASE)
 _RE_OUT_OF = re.compile(r"\bout of\s+([\d,]+)\b", re.IGNORECASE)
@@ -109,10 +109,10 @@ class SupportModel:
     ``step`` is the resolution of the settlement source: the smallest gap
     between two outcomes it can distinguish. It decides whether adjacent
     brackets meet. Kalshi writes strikes at exactly that resolution, which is
-    what the ``.99`` convention is for -- "above 4,199.99" and "4,200 to 4,299.99"
-    leave nothing between them precisely because the index is published to the
-    cent. Weather brackets do the same thing at a coarser grid, jumping 85-86
-    then 87-88 because the observation is a whole number of degrees.
+    what the ``.99`` convention is for: "above 4,199.99" and "4,200 to 4,299.99"
+    leave nothing between them because the index is published to the cent.
+    Weather brackets do the same thing at a coarser grid, jumping 85-86 then
+    87-88 because the observation is a whole number of degrees.
 
     ``lo_bound`` and ``hi_bound`` are the ends of the support where the variable
     has them. A count cannot be negative, so a bracket whose lowest leg is "0"
@@ -179,8 +179,8 @@ class EventStructure:
         exhaustiveness, but nothing in the rules text rules out two named
         outcomes both happening, and leg labels cannot be reasoned about the way
         intervals can. So exclusivity there is taken from the venue's own
-        ``mutually_exclusive`` flag -- which is the one question that flag really
-        does answer -- and an event without it is left out rather than assumed.
+        ``mutually_exclusive`` flag, which is the one question that flag really
+        does answer, and an event without it is left out rather than assumed.
         """
         if self.shape is Shape.PARTITION:
             return self.exhaustive in (Exhaustive.PROVEN, Exhaustive.RESIDUAL_LEG)
@@ -226,8 +226,8 @@ def infer_support(markets: Sequence[dict], strict: bool = False) -> SupportModel
 
     ``strict`` refuses that second step and accepts only what the rules text
     says. It exists to be run alongside the default, because the difference
-    between the two censuses is the honest measure of how much of the "proven"
-    column rests on the inference rather than on the contract.
+    between the two censuses measures how much of the "proven" column rests on
+    the inference rather than on the contract.
     """
     text = " ".join(
         str(m.get(key) or "")
@@ -331,8 +331,8 @@ def classify(event: dict, markets: Sequence[dict] | None = None,
     one once part of it stops quoting.
 
     ``domain_bounds`` maps a series ticker to bounds on its settlement variable
-    that a reader knows but the rules text never states -- the Senate has a
-    hundred seats whether or not the market says so. Supplying one is an
+    that a reader knows but the rules text never states (the Senate has a
+    hundred seats whether or not the market says so). Supplying one is an
     assumption, so it is recorded in the evidence rather than folded in
     silently.
     """

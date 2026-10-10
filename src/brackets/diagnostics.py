@@ -1,21 +1,21 @@
 """Why a raw flag is almost never money.
 
-A screen that only does arithmetic produces flags. Most of them are artefacts,
-and the useful output of this project is not the flag count but the breakdown of
-where the flags came from. Each raw flag is charged to the first of the
-following that applies, in this order:
+Most of the flags a purely arithmetic screen produces are artefacts, so the
+useful output of this project is the breakdown of where they came from rather
+than the flag count. Each raw flag is charged to the first of the following that
+applies, in this order:
 
 ``wrong_shape``
     The legs were summed against par but they do not form a partition at all.
-    Nested ladder rungs are the usual culprit and they are spectacular: summing
-    eighty nested thresholds produces an apparent short-side edge in the tens of
-    dollars.
+    Nested ladder rungs are the usual culprit, and the numbers are large:
+    summing eighty nested thresholds produces an apparent short-side edge in the
+    tens of dollars.
 
 ``not_exhaustive``
     The legs are disjoint but leave outcomes unlisted, so the implied
     probabilities have no reason to sum to one. Buying the lot below par is a
-    bet that the outcome lands inside the listed range, not an arbitrage. This
-    is the quiet one: the arithmetic looks exactly like a real edge.
+    bet that the outcome lands inside the listed range. This case is easy to
+    miss, because the arithmetic looks exactly like a real edge.
 
 ``crossed_book``
     Some leg has bids on both sides adding to more than a dollar. That cannot
@@ -23,22 +23,23 @@ following that applies, in this order:
     number derived from it is suspect.
 
 ``stale_quote``
-    Some leg has not moved either bid in longer than the staleness tolerance.
-    An old quote is not a price. This is by far the most common cause on tightly
-    quoted events, because the whole bracket only has to be wrong by a cent or
-    two to clear a band that is itself only a cent or two wide.
+    Some leg has not moved either bid in longer than the staleness tolerance,
+    so its quote cannot be treated as a live price. Among proven partitions on
+    tightly quoted events this is by far the most common cause, because the
+    whole bracket only has to be wrong by a cent or two to clear a band that is
+    itself only a few cents wide.
 
 ``no_depth``
     Every leg is quoted and fresh, but at least one is too thin on the side the
-    trade actually needs -- the offer for a bracket being bought, the bid for one
-    being sold. The price is real and the size is not. Legs with nothing at all
-    on the relevant side land here too, since a depth of zero is the limiting
-    case of a quote you cannot trade against.
+    trade actually needs (the offer for a bracket being bought, the bid for one
+    being sold). The price is real but there is not enough size behind it. Legs
+    with nothing at all on the relevant side land here too, since a depth of
+    zero is the limiting case of a quote you cannot trade against.
 
 ``fee_bound``
     Everything above passes and the gross edge is genuine, but it does not
-    survive the venue's fee at any order size on the ladder. This is the
-    interesting failure: a real dislocation that is simply too small to pay for.
+    survive the venue's fee at any order size on the ladder. This is the most
+    interesting case: a real dislocation that is too small to pay for.
 
 ``survives``
     Net of spread, depth, staleness and fees, still positive at some size.

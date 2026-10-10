@@ -5,9 +5,9 @@ the panel is built by polling. Once a minute the collector pulls every event in
 the working universe with its markets nested, normalises the prices to cents and
 appends one row per market per minute. The result is the same shape a
 minute-bar file would have, except that every field is a snapshot of the book
-rather than a summary of trades, which is what a spread-and-fee study needs:
-trades tell you where the last taker crossed, quotes tell you where the next one
-can.
+rather than a summary of trades. That is what a spread-and-fee study needs, since
+trades only show where the last taker crossed and the question here is where the
+next one can.
 
 Polling by series rather than by event keeps the request count down. A series
 fetch returns every open event under it in one call, so a universe of forty

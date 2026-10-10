@@ -1,9 +1,9 @@
 """Figures.
 
-Two kinds. The schematics explain the two ideas the arithmetic rests on -- how a
-bid-only book becomes a bid-ask pair, and how a partition differs from a ladder
--- and are drawn from nothing but the definitions. The rest are drawn from a
-collected panel and say what actually happened in it.
+There are two kinds. The schematics illustrate the two ideas the arithmetic
+rests on (how a bid-only book becomes a bid-ask pair, and how a partition differs
+from a ladder) and are drawn from the definitions alone. The rest are drawn from
+a collected panel and show what happened in it.
 """
 
 from __future__ import annotations
@@ -322,11 +322,10 @@ def figure_stale_case(panel: pd.DataFrame, triaged: pd.DataFrame, out: Path,
                       window: int = 45) -> Path | None:
     """The single largest staleness-attributed flag, leg by leg.
 
-    A summary that says "most flags are stale quotes" is worth exactly as much
-    as the one case it can show. This one picks the biggest such flag and draws
-    what the book was doing around it: the frozen leg holding still while the
-    rest of the bracket re-prices around it, and the ask sum sliding under par
-    as a direct result.
+    A staleness count is more convincing with an example beside it. This picks
+    the biggest such flag and draws what the book was doing around it: the
+    frozen leg holding still while the rest of the bracket re-prices around it,
+    and the bracket total crossing par as a direct result.
     """
     stale = triaged[triaged["reason"] == "stale_quote"]
     if not len(stale):
@@ -458,9 +457,9 @@ def figure_fee_size_crossover(out: Path, rate: float = 0.07,
                               dispersed: tuple[str, list[float]] | None = None) -> Path:
     """Per-bracket cost against order size for two partition shapes.
 
-    Falls back to illustrative vectors when no panel is available, but the point
-    lands harder with two real brackets, because the reversal is not a contrived
-    pair -- it is what the venue's own listings do to each other.
+    Falls back to illustrative vectors when no panel is available. Two real
+    brackets make the better figure, because they show the reversal happening
+    between the venue's own listings rather than in a constructed example.
     """
     name_a, prices_a = concentrated or ("concentrated bracket", [88.0] + [1.0] * 11)
     name_b, prices_b = dispersed or ("dispersed bracket", [34.0, 33.0, 33.0])
@@ -542,8 +541,8 @@ def _crossover_pair(panel: pd.DataFrame | None, partitions: pd.DataFrame | None)
     """Pick two real brackets that trade leg count off against dispersion.
 
     The reversal needs the many-legged bracket to be the *concentrated* one. If
-    the panel has no such pair the caller falls back to illustrative vectors,
-    which is honest: a crossover that is not there should not be drawn.
+    the panel has no such pair the caller falls back to illustrative vectors
+    rather than drawing a crossover that the data does not contain.
     """
     if panel is None or partitions is None or not len(partitions):
         return None, None

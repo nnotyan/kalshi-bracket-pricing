@@ -8,11 +8,11 @@ with ``C`` the number of contracts, ``P`` the execution price in dollars and
 ``rate`` the published trading-fee rate (7% on the general schedule). The
 round-up is applied *per order*, not per contract and not per fill.
 
-Two consequences drive everything in this project.
+Two consequences matter for this project.
 
-**The continuous term collapses to a diversity index.** Ignore the rounding for
-a moment and add the fee up over the legs of an exhaustive partition executed at
-implied probabilities ``p_i``::
+First, the continuous term collapses to a diversity index. Ignore the rounding
+for a moment and add the fee up over the legs of an exhaustive partition
+executed at implied probabilities ``p_i``::
 
     total / C = rate * sum_i p_i (1 - p_i)
               = rate * ( sum_i p_i  -  sum_i p_i^2 )
@@ -27,12 +27,12 @@ how many legs there are as such: it depends on how *dispersed* the implied
 distribution is. A twelve-leg partition with one near-certain outcome is cheap
 to assemble; a three-leg coin flip is expensive.
 
-**The rounding puts a floor under every leg.** Each leg is a separate order, so
-each leg pays at least one cent however small the position. A partition with
-many near-zero legs pays ``n`` cents on a one-contract order regardless of the
-fact that its continuous cost is a fraction of a cent. Because the floor scales
-with leg count and the continuous term scales with dispersion, the ranking of
-two partition structures by assembly cost can and does reverse with order size.
+Second, the rounding puts a floor under every leg. Each leg is a separate order,
+so each leg pays at least one cent however small the position. A partition with
+many near-zero legs pays ``n`` cents on a one-contract order even though its
+continuous cost is a fraction of a cent. Because the floor scales with leg count
+and the continuous term scales with dispersion, the ranking of two partition
+structures by assembly cost can and does reverse with order size.
 """
 
 from __future__ import annotations
@@ -44,7 +44,7 @@ from typing import Iterable, Sequence
 import numpy as np
 
 # Kalshi's general trading fee schedule. A handful of series run at a different
-# rate and some carry a separate maker fee, so this is a default and not a law.
+# rate and some carry a separate maker fee, so this is only a default.
 DEFAULT_FEE_RATE = 0.07
 
 # Kalshi's published maker fee on the series that charge one, in cents per
@@ -82,8 +82,8 @@ def bracket_fee_cents(contracts: int, prices: Sequence[float],
     """Total fee to buy ``contracts`` of every leg, with the per-order round-up.
 
     ``orders_per_leg`` above one models working a leg in clips: the round-up
-    applies to each order, so slicing a leg is strictly more expensive than
-    sending it in one go.
+    applies to each order, so slicing a leg never costs less than sending it in
+    one go.
     """
     if orders_per_leg < 1:
         raise ValueError("orders_per_leg must be at least 1")
@@ -132,8 +132,8 @@ def fee_ceiling_cents(n_legs: int, rate: float = DEFAULT_FEE_RATE) -> float:
     Reached by a uniform partition. It rises with leg count but is bounded by
     ``rate * 100`` cents no matter how many legs there are, which is seven cents
     on the general schedule. That is a useful sanity bound: a screen reporting a
-    gross edge larger than the fee ceiling is reporting something structural,
-    not a fee-sensitive marginal call.
+    gross edge larger than the fee ceiling is reporting something structural
+    rather than a fee-sensitive marginal call.
     """
     return rate * 100.0 * max_gini_simpson(n_legs)
 
@@ -143,8 +143,9 @@ def floor_binding_size(price: float, rate: float = DEFAULT_FEE_RATE,
     """Order size below which a leg pays the one-cent floor rather than the rate.
 
     A one-cent leg has ``p(1-p)`` of about 0.01, so on the 7% schedule the floor
-    binds up to roughly fourteen contracts. Under that size the leg is being
-    charged something like a hundred times its continuous rate.
+    binds up to roughly fourteen contracts. Under that size the leg is charged
+    more than its continuous rate, and at a single contract about fourteen
+    times as much.
     """
     p = _as_dollars([price], unit)[0]
     if not 0.0 < p < 1.0:

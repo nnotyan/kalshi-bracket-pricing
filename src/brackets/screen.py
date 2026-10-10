@@ -1,14 +1,14 @@
 """The screens themselves: sum against par, and check a ladder for monotonicity.
 
-Two arithmetic facts do most of the work.
+Two pieces of arithmetic do most of the work.
 
-**Where the no-arbitrage band comes from.** Write each leg's derived ask as its
-mid plus its half-spread, ``a_i = m_i + s_i``, and each bid as ``b_i = m_i - s_i``.
-Buying the whole bracket costs ``sum a_i = sum m_i + sum s_i`` and pays a dollar,
-so it wins only when ``sum m_i < 100 - sum s_i``. Selling the whole bracket --
-which on Kalshi means buying one NO on every leg, since exactly one YES settles
-and therefore ``n - 1`` NOs pay -- returns ``sum b_i`` against the same dollar, so
-it wins only when ``sum m_i > 100 + sum s_i``. The two conditions bracket the mid
+The first is where the no-arbitrage band comes from. Write each leg's derived
+ask as its mid plus its half-spread, ``a_i = m_i + s_i``, and each bid as
+``b_i = m_i - s_i``. Buying the whole bracket costs ``sum a_i = sum m_i + sum s_i``
+and pays a dollar, so it wins only when ``sum m_i < 100 - sum s_i``. Selling the
+whole bracket (which on Kalshi means buying one NO on every leg; exactly one YES
+settles, so ``n - 1`` NOs pay) returns ``sum b_i`` against the same dollar, so it
+wins only when ``sum m_i > 100 + sum s_i``. The two conditions bracket the mid
 sum inside
 
     100 - sum(s_i)   <=   sum(m_i)   <=   100 + sum(s_i)
@@ -17,14 +17,14 @@ and nothing inside that band is tradeable at any size. The half-width is the sum
 of the per-leg half-spreads, so it grows with the number of legs. A six-leg
 weather bracket quoted a penny wide on every leg has a band three cents wide; a
 twenty-eight-leg crypto bracket quoted the same way has a band fourteen cents
-wide. Identical quoting quality, wildly different tolerance for an apparent
-overround, which is the reason a raw flag has to be read relative to the band
-rather than against zero.
+wide. The quoting quality is identical but the tolerance for an apparent
+overround is very different, which is why a raw flag has to be read relative to
+the band rather than against zero.
 
-**What a ladder does instead.** Nested thresholds are not constrained to sum to
-anything, so the sum-against-par screen is meaningless on them. What is
+The second is what a ladder does instead. Nested thresholds are not constrained
+to sum to anything, so the sum-against-par screen is meaningless on them. What is
 constrained is the ordering. If a higher threshold can be sold for more than a
-lower threshold costs -- ``bid(t_high) > ask(t_low)`` with ``t_high > t_low`` --
+lower threshold costs (``bid(t_high) > ask(t_low)`` with ``t_high > t_low``),
 then buying the low rung and selling the high one locks in the difference: the
 pair pays at least a dollar in every state and one hundred cents more in the
 band between the two strikes.
@@ -157,10 +157,10 @@ def screen_partitions(panel: pd.DataFrame, structures: Mapping[str, EventStructu
 def naive_flags(screened: pd.DataFrame, sizes: Sequence[int] = DEFAULT_SIZES) -> pd.DataFrame:
     """Every event-minute a screen that ignores structure would call an arbitrage.
 
-    The raw flag is the honest starting point: it uses only the quotes, applies
-    no depth or staleness filter, and asks nothing about whether the legs cover
-    the outcome space. Counting it is what makes the later filtering auditable
-    instead of merely assertive.
+    The raw flag is the starting point. It uses only the quotes, applies no
+    depth or staleness filter, and does not ask whether the legs cover the
+    outcome space. Counting these flags first makes the later filtering
+    auditable, since every flag that is removed has to be accounted for.
     """
     if not len(screened):
         return screened

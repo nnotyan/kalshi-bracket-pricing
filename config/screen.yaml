@@ -10,8 +10,8 @@ fees:
   order_sizes: [1, 10, 50, 250, 1000]
 
 execution:
-  # An offer with nothing behind it is not a price. Legs quoting less than this
-  # many contracts on the offer are treated as unbuyable.
+  # Legs quoting fewer than this many contracts on the offer are treated as
+  # unbuyable.
   min_offer_size: 25
   # Above this many minutes without either bid moving, a leg is called stale.
   max_stale_minutes: 5

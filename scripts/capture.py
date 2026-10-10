@@ -1,7 +1,7 @@
 """Render the command line output used in the write-up.
 
-The images in the README are the real output of the real commands, captured by
-running them. Regenerate with::
+The terminal images in the README are the actual output of these commands.
+Regenerate them with::
 
     python scripts/capture.py
 """

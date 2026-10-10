@@ -27,8 +27,8 @@ def test_staleness_counts_minutes_since_either_bid_moved():
 
 
 def test_staleness_is_wall_clock_not_poll_count():
-    # A gap in collection counts as elapsed time: we do not get to call a quote
-    # fresh over a stretch when nobody was looking at it.
+    # A gap in collection counts as elapsed time, so a quote is not called fresh
+    # over a stretch when nobody was looking at it.
     stamps = [pd.Timestamp("2026-09-10 12:00", tz="UTC"),
               pd.Timestamp("2026-09-10 12:30", tz="UTC")]
     out = prepare(pd.DataFrame([quote(stamps[0], "A", 40, 59), quote(stamps[1], "A", 40, 59)]))

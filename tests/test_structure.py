@@ -85,7 +85,7 @@ def test_nested_thresholds_are_a_ladder_not_a_partition():
     result = classify(LADDER)
     assert result.shape is Shape.LADDER
     assert result.exhaustive is Exhaustive.NOT_APPLICABLE
-    # This is the whole point: a ladder must never reach the sum-against-par screen.
+    # A ladder must never reach the sum-against-par screen.
     assert not result.screenable
 
 

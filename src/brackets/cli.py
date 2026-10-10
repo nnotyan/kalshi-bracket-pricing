@@ -1,6 +1,6 @@
 """Command line entry points.
 
-Five verbs, in the order they are normally run::
+Six verbs, in the order they are normally run::
 
     brackets board      one-off structural census of every open event
     brackets discover   build the working universe from config/universe.yaml
